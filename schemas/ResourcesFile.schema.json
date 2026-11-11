@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/ResourcesFile.schema.json",
+  "title": "ResourcesFile",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "resources": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "resources"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/QualityReport.schema.json",
+  "title": "QualityReport",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "revision_id": {
+      "type": "string"
+    },
+    "rule_set_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "$ref": "Issue.schema.json"
+      }
+    },
+    "unknown_capabilities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "structural_status": {
+      "type": "string",
+      "enum": [
+        "valid",
+        "invalid"
+      ]
+    },
+    "human_status": {
+      "type": "string",
+      "enum": [
+        "UNREVIEWED",
+        "PARTIAL",
+        "REVIEWED"
+      ]
+    },
+    "confirmed_scopes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "text",
+          "timing",
+          "style"
+        ]
+      }
+    },
+    "generated_at": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "revision_id",
+    "rule_set_version",
+    "issues",
+    "unknown_capabilities",
+    "structural_status",
+    "human_status",
+    "confirmed_scopes",
+    "generated_at"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/ArtifactRef.schema.json",
+  "title": "ArtifactRef",
+  "type": "object",
+  "properties": {
+    "path": {
+      "type": "string"
+    },
+    "sha256": {
+      "type": "string"
+    },
+    "bytes": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "media_type": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "path",
+    "sha256",
+    "bytes",
+    "media_type"
+  ],
+  "additionalProperties": false
+}

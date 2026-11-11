@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/SubtitleView.schema.json",
+  "title": "SubtitleView",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "format": {
+      "type": "string",
+      "enum": [
+        "srt",
+        "ass"
+      ]
+    },
+    "encoding": {
+      "type": "string",
+      "minLength": 1
+    },
+    "encoding_source": {
+      "type": "string",
+      "enum": [
+        "bom",
+        "utf-8",
+        "user"
+      ]
+    },
+    "sha256": {
+      "type": "string"
+    },
+    "bytes": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "newlines": {
+      "type": "object"
+    },
+    "cues": {
+      "type": "array",
+      "items": {
+        "$ref": "ViewCue.schema.json"
+      }
+    },
+    "styles": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "script_info": {
+      "type": "object"
+    },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "problems": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "extensions": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "format",
+    "encoding",
+    "encoding_source",
+    "sha256",
+    "bytes",
+    "newlines",
+    "cues",
+    "styles",
+    "script_info",
+    "sections",
+    "problems",
+    "extensions"
+  ],
+  "additionalProperties": false
+}

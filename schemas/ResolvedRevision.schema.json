@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/ResolvedRevision.schema.json",
+  "title": "ResolvedRevision",
+  "type": "object",
+  "properties": {
+    "kind": {
+      "type": "string",
+      "enum": [
+        "machine",
+        "source",
+        "review"
+      ]
+    },
+    "revision_id": {
+      "type": "string"
+    },
+    "project_id": {
+      "type": "string"
+    },
+    "media_id": {
+      "type": "string"
+    },
+    "directory": {
+      "type": "string"
+    },
+    "manifest": {
+      "type": "object"
+    },
+    "subtitle_files": {
+      "type": "object"
+    },
+    "confirmations": {
+      "type": "object"
+    },
+    "notices": {
+      "type": "array",
+      "items": {}
+    }
+  },
+  "required": [
+    "kind",
+    "revision_id",
+    "project_id",
+    "media_id",
+    "directory",
+    "manifest",
+    "subtitle_files",
+    "confirmations",
+    "notices"
+  ],
+  "additionalProperties": false
+}

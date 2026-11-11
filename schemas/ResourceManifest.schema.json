@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/ResourceManifest.schema.json",
+  "title": "ResourceManifest",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "resource_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "ffmpeg",
+        "ffprobe",
+        "asr_engine",
+        "ocr_engine",
+        "translation_engine",
+        "model",
+        "font",
+        "editor"
+      ]
+    },
+    "absolute_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version_text": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "upstream_url": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "upstream_revision": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "content_sha256": {
+      "type": "string"
+    },
+    "files": {
+      "type": "array",
+      "items": {
+        "$ref": "ResourceFile.schema.json"
+      },
+      "minItems": 1
+    },
+    "capabilities": {
+      "$ref": "Capabilities.schema.json"
+    },
+    "license_status": {
+      "type": "string",
+      "enum": [
+        "recorded",
+        "unresolved",
+        "not_for_redistribution"
+      ]
+    },
+    "inspected_at": {
+      "type": "string"
+    },
+    "extensions": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "resource_id",
+    "kind",
+    "absolute_path",
+    "version_text",
+    "upstream_url",
+    "upstream_revision",
+    "content_sha256",
+    "files",
+    "capabilities",
+    "license_status",
+    "inspected_at",
+    "extensions"
+  ],
+  "additionalProperties": false
+}

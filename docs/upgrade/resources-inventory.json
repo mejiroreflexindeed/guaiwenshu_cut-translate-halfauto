@@ -1,0 +1,621 @@
+{
+  "schema_version": 2,
+  "record_kind": "resources_inventory",
+  "generated_by": "W00",
+  "inspected_at": "2026-11-08T12:20:18Z",
+  "scope": "执行机（测试侧）资源登记。present=false 的条目是计划 D06/第 7 节要求但本机缺失的默认资源；present=true 且 role 含 registered_not_default 的条目只登记，不替换默认引擎。",
+  "hardware": {
+    "gpu": {
+      "name": "NVIDIA GeForce RTX 4080 SUPER",
+      "memory_total_mib": 16376,
+      "driver_version": "617.42",
+      "source": "nvidia-smi --query-gpu",
+      "measured_at": "2026-11-08T12:20:18Z"
+    },
+    "cpu": "NOT_MEASURED",
+    "ram": "NOT_MEASURED（本会话未查询）"
+  },
+  "runtimes": [
+    {
+      "name": "CPython",
+      "version": "3.10.6",
+      "arch": "win-amd64",
+      "tkinter": "8.6",
+      "path": "USER_HOME/AppData/Local/Programs/Python/Python310/python.exe",
+      "role": "legacy_baseline_only"
+    },
+    {
+      "name": "venv(3.10.6)",
+      "path": "LOCAL_WORKSPACE/roast-venv310",
+      "packages": [
+        "comtypes==1.4.17",
+        "imageio-ffmpeg==0.6.0",
+        "pillow==12.2.0",
+        "pywin32==312",
+        "pywinauto==0.6.9",
+        "PyYAML==6.0.3",
+        "six==1.17.0",
+        "yt-dlp==2026.7.4"
+      ],
+      "role": "legacy_test_baseline"
+    },
+    {
+      "name": "CPython 3.13",
+      "version": null,
+      "role": "target_runtime_12.2",
+      "present": false,
+      "blocker": "B02"
+    }
+  ],
+  "resources": [
+    {
+      "resource_id": "ffmpeg.gyan.2024-09-26.essentials",
+      "kind": "ffmpeg",
+      "present": true,
+      "role": "used_for_W03_media_fixtures",
+      "absolute_path": "EXTERNAL_TOOLS_ROOT/GalTransl-ASMR-20241110-NVIDIA(1)/app/_internal/ffmpeg.exe",
+      "version_text": "ffmpeg version 2024-09-26-git-f43916e217-essentials_build-www.gyan.dev",
+      "upstream_url": "https://www.gyan.dev/ffmpeg/builds/",
+      "upstream_revision": "git-f43916e217",
+      "content_sha256": "2f14bb2fb8df3d54728fed45b5f6b84fce26e30b217e820e6e97fc5688b1a0d2",
+      "files": [
+        {
+          "path": "ffmpeg.exe",
+          "sha256": "2f14bb2fb8df3d54728fed45b5f6b84fce26e30b217e820e6e97fc5688b1a0d2",
+          "bytes": 86947840
+        }
+      ],
+      "capabilities": {
+        "cpu": true,
+        "gpu_vulkan": "not_applicable",
+        "gpu_cuda": "not_applicable",
+        "word_timestamps": "not_applicable",
+        "vad": "not_applicable",
+        "ocr_scores": "not_applicable",
+        "frame_pts": "unknown",
+        "libass": "unknown",
+        "json_probe": "not_applicable"
+      },
+      "license_status": "recorded",
+      "license_note": "gyan.dev essentials 构建为 GPL；不捆绑",
+      "inspected_at": "2026-11-08T12:20:18Z",
+      "extensions": {
+        "source": "GalTransl-ASMR 20241110 整合包内置；-version 探针成功",
+        "w03": "-encoders 探针确认含 libx264；-fps_mode、-enc_time_base、setts 位流滤镜可用（T06-W03 实测）"
+      }
+    },
+    {
+      "resource_id": "ffprobe.gyan.2022-04-07.full",
+      "kind": "ffprobe",
+      "present": true,
+      "role": "used_for_W03_media_fixtures",
+      "absolute_path": "EXTERNAL_TOOLS_ROOT/GPT-SoVITS/runtime/ffprobe.exe",
+      "version_text": "ffprobe version 2022-04-07-git-607ecc27ed-full_build-www.gyan.dev",
+      "upstream_url": "https://www.gyan.dev/ffmpeg/builds/",
+      "upstream_revision": "git-607ecc27ed",
+      "content_sha256": "2da5b980a9a14a808f423d181c4ed51c2b8af11b1366699f3f7eab0609926f8f",
+      "files": [
+        {
+          "path": "ffprobe.exe",
+          "sha256": "2da5b980a9a14a808f423d181c4ed51c2b8af11b1366699f3f7eab0609926f8f",
+          "bytes": 122135040
+        }
+      ],
+      "capabilities": {
+        "cpu": true,
+        "gpu_vulkan": "not_applicable",
+        "gpu_cuda": "not_applicable",
+        "word_timestamps": "not_applicable",
+        "vad": "not_applicable",
+        "ocr_scores": "not_applicable",
+        "frame_pts": true,
+        "libass": "not_applicable",
+        "json_probe": true
+      },
+      "license_status": "recorded",
+      "license_note": "gyan.dev full 构建（--enable-gpl --enable-version3）；不捆绑",
+      "inspected_at": "2026-11-09T16:06:05Z",
+      "extensions": {
+        "source": "GPT-SoVITS 整合包 runtime 目录内置",
+        "correction": "W00 把 ffprobe 登记为缺失：当时只查了 PATH 和已登记 FFmpeg 的同目录。W03 重新清点发现本条。只读使用，未复制、未改动该目录",
+        "version_note": "与本机使用的 ffmpeg（2024-09-26）不是同一发布；T06-W03 用这一对执行。交付时由负责人确定正式的 ffmpeg/ffprobe 来源（B01 中 ffprobe 一项缩小为“选定正式来源”）",
+        "capability_evidence": "json_probe / frame_pts 来自 W03 实测：-show_format -show_streams、-show_entries packet=…、-show_frames 均返回 JSON 与 PTS"
+      }
+    },
+    {
+      "resource_id": "ffmpeg.n4.3.2.gpt-sovits",
+      "kind": "ffmpeg",
+      "present": true,
+      "role": "registered_not_used",
+      "absolute_path": "EXTERNAL_TOOLS_ROOT/GPT-SoVITS/runtime/ffmpeg.exe",
+      "version_text": "ffmpeg version n4.3.2-160-gfbb9368226",
+      "upstream_url": null,
+      "upstream_revision": "n4.3.2-160-gfbb9368226",
+      "content_sha256": "b6a4d917a444790f4c06ada640c1c0c95aecde2f8953ed8d0dfb19352500bfcd",
+      "files": [
+        {
+          "path": "ffmpeg.exe",
+          "sha256": "b6a4d917a444790f4c06ada640c1c0c95aecde2f8953ed8d0dfb19352500bfcd",
+          "bytes": 52925440
+        }
+      ],
+      "capabilities": {
+        "cpu": true,
+        "gpu_vulkan": "not_applicable",
+        "gpu_cuda": "not_applicable",
+        "word_timestamps": "not_applicable",
+        "vad": "not_applicable",
+        "ocr_scores": "not_applicable",
+        "frame_pts": "unknown",
+        "libass": true,
+        "json_probe": "not_applicable"
+      },
+      "license_status": "unresolved",
+      "license_note": null,
+      "inspected_at": "2026-11-09T16:06:05Z",
+      "extensions": {
+        "source": "GPT-SoVITS 整合包 runtime 目录内置",
+        "not_used_reason": "构建配置含 --disable-libx264，且早于 5.1（没有 -fps_mode）；不能生成复核/识别兼容视频，只登记"
+      }
+    },
+    {
+      "resource_id": "whisper-cli.ggml.required",
+      "kind": "asr_engine",
+      "present": false,
+      "role": "default_engine_D06",
+      "absolute_path": null,
+      "version_text": null,
+      "upstream_url": "https://github.com/ggml-org/whisper.cpp",
+      "upstream_revision": null,
+      "content_sha256": null,
+      "files": [],
+      "capabilities": {
+        "cpu": "unknown",
+        "gpu_vulkan": "unknown",
+        "gpu_cuda": "unknown",
+        "word_timestamps": "unknown",
+        "vad": "unknown",
+        "ocr_scores": "not_applicable",
+        "frame_pts": "not_applicable",
+        "libass": "not_applicable",
+        "json_probe": "not_applicable"
+      },
+      "license_status": "unresolved",
+      "license_note": null,
+      "inspected_at": "2026-11-08T12:20:18Z",
+      "extensions": {
+        "missing_reason": "执行机无 whisper-cli.exe（VoiceTransl _internal/whisper 亦不存在）",
+        "blocker": "B01"
+      }
+    },
+    {
+      "resource_id": "ggml-large-v3.required",
+      "kind": "model",
+      "present": false,
+      "role": "default_model_D06",
+      "absolute_path": null,
+      "version_text": null,
+      "upstream_url": "https://huggingface.co/ggerganov/whisper.cpp",
+      "upstream_revision": null,
+      "content_sha256": null,
+      "files": [],
+      "capabilities": {
+        "cpu": "not_applicable",
+        "gpu_vulkan": "not_applicable",
+        "gpu_cuda": "not_applicable",
+        "word_timestamps": "not_applicable",
+        "vad": "not_applicable",
+        "ocr_scores": "not_applicable",
+        "frame_pts": "not_applicable",
+        "libass": "not_applicable",
+        "json_probe": "not_applicable"
+      },
+      "license_status": "unresolved",
+      "license_note": null,
+      "inspected_at": "2026-11-08T12:20:18Z",
+      "extensions": {
+        "blocker": "B01"
+      }
+    },
+    {
+      "resource_id": "ggml-silero-v5.1.2.required",
+      "kind": "model",
+      "present": false,
+      "role": "default_vad_D06",
+      "absolute_path": null,
+      "version_text": null,
+      "upstream_url": "https://github.com/ggml-org/whisper.cpp (models/)",
+      "upstream_revision": null,
+      "content_sha256": null,
+      "files": [],
+      "capabilities": {
+        "cpu": "not_applicable",
+        "gpu_vulkan": "not_applicable",
+        "gpu_cuda": "not_applicable",
+        "word_timestamps": "not_applicable",
+        "vad": "not_applicable",
+        "ocr_scores": "not_applicable",
+        "frame_pts": "not_applicable",
+        "libass": "not_applicable",
+        "json_probe": "not_applicable"
+      },
+      "license_status": "unresolved",
+      "license_note": null,
+      "inspected_at": "2026-11-08T12:20:18Z",
+      "extensions": {
+        "blocker": "B01"
+      }
+    },
+    {
+      "resource_id": "magia-timeline.required",
+      "kind": "ocr_engine",
+      "present": false,
+      "role": "default_engine_D06",
+      "absolute_path": null,
+      "version_text": null,
+      "upstream_url": null,
+      "upstream_revision": null,
+      "content_sha256": null,
+      "files": [],
+      "capabilities": {
+        "cpu": "not_applicable",
+        "gpu_vulkan": "not_applicable",
+        "gpu_cuda": "not_applicable",
+        "word_timestamps": "not_applicable",
+        "vad": "not_applicable",
+        "ocr_scores": "unknown",
+        "frame_pts": "unknown",
+        "libass": "not_applicable",
+        "json_probe": "not_applicable"
+      },
+      "license_status": "unresolved",
+      "license_note": null,
+      "inspected_at": "2026-11-08T12:20:18Z",
+      "extensions": {
+        "missing_reason": "执行机无 MagiaTimeline；上游地址由 W01 按审计报告 02/03 核实后填入",
+        "blocker": "B01/B03"
+      }
+    },
+    {
+      "resource_id": "llama-server.required",
+      "kind": "translation_engine",
+      "present": false,
+      "role": "default_engine_D06",
+      "absolute_path": null,
+      "version_text": null,
+      "upstream_url": "https://github.com/ggml-org/llama.cpp",
+      "upstream_revision": null,
+      "content_sha256": null,
+      "files": [],
+      "capabilities": {
+        "cpu": "unknown",
+        "gpu_vulkan": "unknown",
+        "gpu_cuda": "unknown",
+        "word_timestamps": "not_applicable",
+        "vad": "not_applicable",
+        "ocr_scores": "not_applicable",
+        "frame_pts": "not_applicable",
+        "libass": "not_applicable",
+        "json_probe": "not_applicable"
+      },
+      "license_status": "recorded",
+      "license_note": "MIT",
+      "inspected_at": "2026-11-08T12:20:18Z",
+      "extensions": {
+        "blocker": "B01"
+      }
+    },
+    {
+      "resource_id": "sakura-galtransl-7b-v3.7.required",
+      "kind": "model",
+      "present": false,
+      "role": "default_model_D06",
+      "absolute_path": null,
+      "version_text": null,
+      "upstream_url": "https://huggingface.co/SakuraLLM/Sakura-GalTransl-7B-v3.7",
+      "upstream_revision": null,
+      "content_sha256": null,
+      "files": [],
+      "capabilities": {
+        "cpu": "not_applicable",
+        "gpu_vulkan": "not_applicable",
+        "gpu_cuda": "not_applicable",
+        "word_timestamps": "not_applicable",
+        "vad": "not_applicable",
+        "ocr_scores": "not_applicable",
+        "frame_pts": "not_applicable",
+        "libass": "not_applicable",
+        "json_probe": "not_applicable"
+      },
+      "license_status": "recorded",
+      "license_note": "模型卡 CC BY-NC-SA 4.0；记录不等于批准",
+      "inspected_at": "2026-11-08T12:20:18Z",
+      "extensions": {
+        "blocker": "B01"
+      }
+    },
+    {
+      "resource_id": "yt-dlp.binary",
+      "kind": "downloader",
+      "present": false,
+      "role": "downloader_FR01",
+      "absolute_path": null,
+      "version_text": "python 包 yt-dlp 2026.7.4 已在开发 venv 中可用（python -m yt_dlp）",
+      "upstream_url": "https://github.com/yt-dlp/yt-dlp",
+      "upstream_revision": "2026.7.4 (pip)",
+      "content_sha256": null,
+      "files": [],
+      "capabilities": {
+        "cpu": "not_applicable",
+        "gpu_vulkan": "not_applicable",
+        "gpu_cuda": "not_applicable",
+        "word_timestamps": "not_applicable",
+        "vad": "not_applicable",
+        "ocr_scores": "not_applicable",
+        "frame_pts": "not_applicable",
+        "libass": "not_applicable",
+        "json_probe": "not_applicable"
+      },
+      "license_status": "recorded",
+      "license_note": "Unlicense",
+      "inspected_at": "2026-11-08T12:20:18Z",
+      "extensions": {
+        "note": "kind 'downloader' 不在计划 6.2 枚举内；W01 contracts 定稿时决定归入 extensions 或申请枚举扩展"
+      }
+    },
+    {
+      "resource_id": "editor.subtitle-edit",
+      "kind": "editor",
+      "present": false,
+      "role": "D03_srt_editor",
+      "absolute_path": null,
+      "version_text": null,
+      "upstream_url": "https://github.com/SubtitleEdit/subtitleedit",
+      "upstream_revision": null,
+      "content_sha256": null,
+      "files": [],
+      "capabilities": {
+        "cpu": "not_applicable",
+        "gpu_vulkan": "not_applicable",
+        "gpu_cuda": "not_applicable",
+        "word_timestamps": "not_applicable",
+        "vad": "not_applicable",
+        "ocr_scores": "not_applicable",
+        "frame_pts": "not_applicable",
+        "libass": "not_applicable",
+        "json_probe": "not_applicable"
+      },
+      "license_status": "unresolved",
+      "license_note": null,
+      "inspected_at": "2026-11-08T12:20:18Z",
+      "extensions": {
+        "blocker": "B05"
+      }
+    },
+    {
+      "resource_id": "editor.aegisub",
+      "kind": "editor",
+      "present": false,
+      "role": "D03_ass_editor",
+      "absolute_path": null,
+      "version_text": null,
+      "upstream_url": "https://github.com/TypesettingTools/Aegisub",
+      "upstream_revision": null,
+      "content_sha256": null,
+      "files": [],
+      "capabilities": {
+        "cpu": "not_applicable",
+        "gpu_vulkan": "not_applicable",
+        "gpu_cuda": "not_applicable",
+        "word_timestamps": "not_applicable",
+        "vad": "not_applicable",
+        "ocr_scores": "not_applicable",
+        "frame_pts": "not_applicable",
+        "libass": "not_applicable",
+        "json_probe": "not_applicable"
+      },
+      "license_status": "unresolved",
+      "license_note": null,
+      "inspected_at": "2026-11-08T12:20:18Z",
+      "extensions": {
+        "blocker": "B05"
+      }
+    },
+    {
+      "resource_id": "whisper-faster.purfview.r192.3",
+      "kind": "asr_engine",
+      "present": true,
+      "role": "registered_not_default (D06/D20)",
+      "absolute_path": "EXTERNAL_TOOLS_ROOT/GalTransl-ASMR-20241110-NVIDIA(1)/app/_internal/whisper-faster/whisper-faster.exe",
+      "version_text": "whisper-faster.exe 1.0.1",
+      "upstream_url": "https://github.com/Purfview/whisper-standalone-win",
+      "upstream_revision": "Whisper-Faster_r192.3_windows (按同目录 README)",
+      "content_sha256": null,
+      "files": [
+        {
+          "path": "whisper-faster.exe",
+          "sha256": "ebad2b0ac81676ad86027ccf2e2c4ad5ec1349a296c1872e7c73f45674003209",
+          "bytes": null
+        },
+        {
+          "path": "cublas64_11.dll",
+          "sha256": null,
+          "bytes": 88668160
+        },
+        {
+          "path": "cublasLt64_11.dll",
+          "sha256": null,
+          "bytes": 544070144
+        },
+        {
+          "path": "cudnn_cnn_infer64_8.dll",
+          "sha256": null,
+          "bytes": 602384936
+        },
+        {
+          "path": "cudnn_ops_infer64_8.dll",
+          "sha256": null,
+          "bytes": 96301608
+        }
+      ],
+      "capabilities": {
+        "cpu": "unknown",
+        "gpu_vulkan": "not_applicable",
+        "gpu_cuda": "unknown",
+        "word_timestamps": "unknown",
+        "vad": "unknown",
+        "ocr_scores": "not_applicable",
+        "frame_pts": "not_applicable",
+        "libass": "not_applicable",
+        "json_probe": "not_applicable"
+      },
+      "license_status": "recorded",
+      "license_note": "whisper-standalone-win MIT；CUDA/cuDNN DLL 为 NVIDIA 许可，不可随意再分发",
+      "inspected_at": "2026-11-08T12:20:18Z",
+      "extensions": {
+        "note": "CTranslate2 引擎，与 D06 的 whisper.cpp GGML 不可互换；只登记。完整目录 content_sha256 由 W01 inspect_resources 生成"
+      }
+    },
+    {
+      "resource_id": "faster-whisper-large-v3.ct2",
+      "kind": "model",
+      "present": true,
+      "role": "registered_not_default (D06/D20)",
+      "absolute_path": "EXTERNAL_TOOLS_ROOT/GalTransl-ASMR-20241110-NVIDIA(1)/app/_internal/whisper-faster/faster-whisper-large-v3",
+      "version_text": null,
+      "upstream_url": "https://huggingface.co/Systran/faster-whisper-large-v3",
+      "upstream_revision": null,
+      "content_sha256": null,
+      "files": [
+        {
+          "path": "model.bin",
+          "sha256": "69f74147e3334731bc3a76048724833325d2ec74642fb52620eda87352e3d4f1",
+          "bytes": 3087284237
+        },
+        {
+          "path": "config.json",
+          "sha256": null,
+          "bytes": 2394
+        },
+        {
+          "path": "tokenizer.json",
+          "sha256": null,
+          "bytes": 2480617
+        },
+        {
+          "path": "vocabulary.json",
+          "sha256": null,
+          "bytes": 1068114
+        },
+        {
+          "path": "preprocessor_config.json",
+          "sha256": null,
+          "bytes": 340
+        }
+      ],
+      "capabilities": {
+        "cpu": "not_applicable",
+        "gpu_vulkan": "not_applicable",
+        "gpu_cuda": "not_applicable",
+        "word_timestamps": "not_applicable",
+        "vad": "not_applicable",
+        "ocr_scores": "not_applicable",
+        "frame_pts": "not_applicable",
+        "libass": "not_applicable",
+        "json_probe": "not_applicable"
+      },
+      "license_status": "recorded",
+      "license_note": "MIT（Systran 转换，源自 OpenAI Whisper MIT）",
+      "inspected_at": "2026-11-08T12:20:18Z",
+      "extensions": {}
+    },
+    {
+      "resource_id": "llama.cpp.server.2024-02-05",
+      "kind": "translation_engine",
+      "present": true,
+      "role": "registered_not_default (D06/D20)",
+      "absolute_path": "EXTERNAL_TOOLS_ROOT/llama/server.exe",
+      "version_text": "旧版 server.exe（文件日期 2024-02-05；--version 不支持）",
+      "upstream_url": "https://github.com/ggml-org/llama.cpp",
+      "upstream_revision": null,
+      "content_sha256": null,
+      "files": [
+        {
+          "path": "server.exe",
+          "sha256": "4adb394c87ab4e676c3e2b5a7ffb3b798355fcdc77ceeff910336bb0ff2fa27c",
+          "bytes": 897024
+        },
+        {
+          "path": "llama.dll",
+          "sha256": "a94a08b5dd42895cd72b8947df7bec28661ce6a984a3c251cdef197ca20266e3",
+          "bytes": null
+        },
+        {
+          "path": "ggml_shared.dll",
+          "sha256": "f26702a04180237d026a387fcfac6c3c01c10b0a6d42c2366e6847f5a799e705",
+          "bytes": null
+        }
+      ],
+      "capabilities": {
+        "cpu": "unknown",
+        "gpu_vulkan": "unknown",
+        "gpu_cuda": "unknown",
+        "word_timestamps": "not_applicable",
+        "vad": "not_applicable",
+        "ocr_scores": "not_applicable",
+        "frame_pts": "not_applicable",
+        "libass": "not_applicable",
+        "json_probe": "not_applicable"
+      },
+      "license_status": "recorded",
+      "license_note": "MIT（同目录 llama.cpp.txt）",
+      "inspected_at": "2026-11-08T12:20:18Z",
+      "extensions": {
+        "note": "不是计划要求的 llama-server；/v1/chat/completions 兼容性未验证；同整合包 _internal/llama 另有 2024-11-10 构建，未逐一哈希"
+      }
+    },
+    {
+      "resource_id": "sakura-13b-lnovel-v0.9b-q4km",
+      "kind": "model",
+      "present": true,
+      "role": "registered_not_default (D06/D20)",
+      "absolute_path": "EXTERNAL_TOOLS_ROOT/sakura-13b-lnovel-v0.9b-Q4_K_M.gguf",
+      "version_text": "sakura-13b-lnovel-v0.9b Q4_K_M",
+      "upstream_url": "https://huggingface.co/SakuraLLM",
+      "upstream_revision": null,
+      "content_sha256": "70492eb77d7ad90613a56b0b214cdec7957f7af6d64fb93851b004c48a1151b7",
+      "files": [
+        {
+          "path": "sakura-13b-lnovel-v0.9b-Q4_K_M.gguf",
+          "sha256": "70492eb77d7ad90613a56b0b214cdec7957f7af6d64fb93851b004c48a1151b7",
+          "bytes": 9449073728
+        }
+      ],
+      "capabilities": {
+        "cpu": "not_applicable",
+        "gpu_vulkan": "not_applicable",
+        "gpu_cuda": "not_applicable",
+        "word_timestamps": "not_applicable",
+        "vad": "not_applicable",
+        "ocr_scores": "not_applicable",
+        "frame_pts": "not_applicable",
+        "libass": "not_applicable",
+        "json_probe": "not_applicable"
+      },
+      "license_status": "unresolved",
+      "license_note": "具体模型卡与条款 W01 核实；SakuraLLM 系列多为 CC BY-NC-SA 4.0",
+      "inspected_at": "2026-11-08T12:20:18Z",
+      "extensions": {
+        "duplicate_copy": "EXTERNAL_TOOLS_ROOT/GalTransl-ASMR-20241110-NVIDIA(1)/app/_internal/llama/sakura-13b-lnovel-v0.9b-Q4_K_M.gguf (同哈希)",
+        "note": "不是 D06 的 Sakura-GalTransl-7B-v3.7"
+      }
+    }
+  ],
+  "path_placeholders": {
+    "EXTERNAL_TOOLS_ROOT": "执行机外部软件/模型根目录",
+    "LOCAL_WORKSPACE": "执行机工作区",
+    "USER_HOME": "执行机用户目录"
+  },
+  "updated_by": "W03",
+  "updated_at": "2026-11-09T16:06:05Z"
+}

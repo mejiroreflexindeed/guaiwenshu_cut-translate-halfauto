@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/Derivation.schema.json",
+  "title": "Derivation",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "source_media_id": {
+      "type": "string"
+    },
+    "source_stream": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "origin_offset_ms": {
+      "type": "integer"
+    },
+    "trim_before_ms": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "pad_before_ms": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "pad_after_ms": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "output_duration_ms": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "ffmpeg_ref": {
+      "$ref": "ResourceRef.schema.json"
+    },
+    "argv_ref": {
+      "$ref": "ArtifactRef.schema.json"
+    },
+    "extensions": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "source_media_id",
+    "source_stream",
+    "origin_offset_ms",
+    "trim_before_ms",
+    "pad_before_ms",
+    "pad_after_ms",
+    "output_duration_ms",
+    "ffmpeg_ref",
+    "argv_ref",
+    "extensions"
+  ],
+  "additionalProperties": false
+}

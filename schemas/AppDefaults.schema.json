@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/AppDefaults.schema.json",
+  "title": "AppDefaults",
+  "type": "object",
+  "properties": {
+    "recognition_mode": {
+      "type": "string",
+      "enum": [
+        "combined",
+        "speech_only",
+        "visual_only",
+        "supplied_source"
+      ]
+    },
+    "timing_mode": {
+      "type": "string",
+      "enum": [
+        "mixed",
+        "screen",
+        "speech"
+      ]
+    },
+    "continue_on_error": {
+      "type": "boolean"
+    },
+    "output_formats": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "srt",
+          "ass"
+        ]
+      },
+      "minItems": 1
+    },
+    "render_after_run": {
+      "type": "boolean"
+    },
+    "copy_original": {
+      "type": "boolean"
+    },
+    "gpu_profile": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "recognition_mode",
+    "timing_mode",
+    "continue_on_error",
+    "output_formats",
+    "render_after_run",
+    "copy_original",
+    "gpu_profile"
+  ],
+  "additionalProperties": false
+}

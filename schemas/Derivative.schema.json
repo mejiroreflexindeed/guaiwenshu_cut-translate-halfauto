@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/Derivative.schema.json",
+  "title": "Derivative",
+  "type": "object",
+  "properties": {
+    "media_revision": {
+      "type": "string",
+      "minLength": 1
+    },
+    "artifact_ref": {
+      "$ref": "ArtifactRef.schema.json"
+    },
+    "derivation_ref": {
+      "$ref": "ArtifactRef.schema.json"
+    },
+    "clock_verified": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "media_revision",
+    "artifact_ref",
+    "derivation_ref",
+    "clock_verified"
+  ],
+  "additionalProperties": false
+}

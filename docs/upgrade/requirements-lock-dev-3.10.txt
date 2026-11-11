@@ -1,0 +1,9 @@
+# pip freeze of the 3.10 development venv used for the W00 legacy baseline (22/22) and W01 T01; no wheel hashes (3.13 lock is BLOCKED, B02)
+comtypes==1.4.17
+imageio-ffmpeg==0.6.0
+pillow==12.2.0
+pywin32==312
+pywinauto==0.6.9
+PyYAML==6.0.3
+six==1.17.0
+yt-dlp==2026.7.4

@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/DictionaryRevision.schema.json",
+  "title": "DictionaryRevision",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "revision_id": {
+      "type": "string"
+    },
+    "content_sha256": {
+      "type": "string"
+    },
+    "files": {
+      "type": "array",
+      "items": {
+        "$ref": "DictionaryFile.schema.json"
+      }
+    },
+    "diagnostics_ref": {
+      "$ref": "ArtifactRef.schema.json"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "extensions": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "revision_id",
+    "content_sha256",
+    "files",
+    "diagnostics_ref",
+    "created_at",
+    "extensions"
+  ],
+  "additionalProperties": false
+}

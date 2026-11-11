@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/CatalogReport.schema.json",
+  "title": "CatalogReport",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "inspected_at": {
+      "type": "string"
+    },
+    "resources_file": {
+      "type": "string",
+      "minLength": 1
+    },
+    "manifests": {
+      "type": "object"
+    },
+    "problems": {
+      "type": "array",
+      "items": {
+        "$ref": "ErrorObject.schema.json"
+      }
+    },
+    "hash_cache_note": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "inspected_at",
+    "resources_file",
+    "manifests",
+    "problems",
+    "hash_cache_note"
+  ],
+  "additionalProperties": false
+}

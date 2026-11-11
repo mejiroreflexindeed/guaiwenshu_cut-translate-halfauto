@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/ResourceRef.schema.json",
+  "title": "ResourceRef",
+  "type": "object",
+  "properties": {
+    "resource_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "content_sha256": {
+      "type": "string"
+    },
+    "manifest_sha256": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "resource_id",
+    "content_sha256",
+    "manifest_sha256"
+  ],
+  "additionalProperties": false
+}

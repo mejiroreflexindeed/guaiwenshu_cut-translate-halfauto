@@ -1,0 +1,38 @@
+{
+  "schema_version": 2,
+  "record_kind": "runtime_lock",
+  "plan_section": "12.2",
+  "frozen_at": "2026-11-08",
+  "python": {
+    "selection_rule": "W01 冻结当日已经发布、python.org 仍提供 Windows x64 完整安装发行的最高 3.13 补丁版本；普通 GIL、非 debug、x64",
+    "selected_version": "3.13.17",
+    "release_date": "2026-10-21",
+    "installer_url": "https://www.python.org/ftp/python/3.13.17/python-3.13.17-amd64.exe",
+    "published_sha256": "5da012101ba2e17113a9a1cd901e9ce1441086f2b7ecb5de06ec94163899a190",
+    "sigstore_url": "https://www.python.org/ftp/python/3.13.17/python-3.13.17-amd64.exe.sigstore",
+    "signature_url": "https://www.python.org/ftp/python/3.13.17/python-3.13.17-amd64.exe.asc",
+    "release_page": "https://www.python.org/downloads/release/python-31317/",
+    "series_status": "3.13 自 2026-10 起为 security-only；3.13.18（2026-10-25）起只发源码，不再提供二进制安装包；3.13.17 是最后一个带安装包的 3.13 版本",
+    "local_verification": "NOT_RUN：未下载、未安装（安装需要负责人授权，B02）；published_sha256 为 python.org 页面公布值，尚未本机核对",
+    "fallback_rule": "若 3.13.17 依赖不兼容，按计划 12.2 提交运行时变更单；不得以 3.10 作为新版交付，不得改用 3.14/3.15 或自由线程版",
+    "legacy_runtime": "CPython 3.10.6（执行机）/ 3.10.11（维护者）仅用于旧版复现与回滚"
+  },
+  "dependencies": {
+    "policy": "先固定既有有效版本，新增遗漏的 PyYAML 6.0.3；Pillow 12.2.0、yt-dlp 2026.7.4、PyInstaller 6.21.0 作为兼容验证起点；不批量升级",
+    "core": ["PyYAML==6.0.3", "yt-dlp==2026.7.4"],
+    "legacy": ["pywinauto==0.6.9", "pywin32==312", "Pillow==12.2.0"],
+    "dev": ["imageio-ffmpeg==0.6.0"],
+    "build": ["PyInstaller==6.21.0"],
+    "files": ["requirements-core.txt", "requirements-legacy.txt", "requirements-dev.txt", "requirements.txt", "requirements-build.txt"],
+    "lock_3_13": {"status": "BLOCKED", "reason": "执行机没有 3.13 解释器，无法生成带 wheel 哈希的 transitive lock；安装 3.13.17 后用 --no-system-site-packages 隔离环境生成", "blocker": "B02"},
+    "lock_3_10_dev": {"status": "RECORDED", "file": "docs/upgrade/requirements-lock-dev-3.10.txt", "note": "pip freeze 输出，无 wheel 哈希；只证明 3.10 下旧测试 22/22 与 T01 通过所用的精确版本"},
+    "main_process_never_imports": ["torch", "paddle", "qwen_asr"],
+    "imageio_ffmpeg_role": "开发/测试合成素材的后备 FFmpeg；不再是唯一 FFmpeg 发现来源，真实运行通过 resources.local.json 显式登记 ffmpeg/ffprobe"
+  },
+  "packaging": {
+    "form": "PyInstaller one-dir，UPX 关闭，roast.exe + roast-gui.exe 共享 _internal",
+    "spec": "build/roast-onedir.spec",
+    "build_status": "NOT_RUN（T09 需要 3.13 与干净机，B02/B09）",
+    "excluded_from_package": ["模型", "第三方引擎二进制", "字体", "用户 local 配置", "视频/任务/日志"]
+  }
+}

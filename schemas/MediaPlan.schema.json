@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/MediaPlan.schema.json",
+  "title": "MediaPlan",
+  "type": "object",
+  "properties": {
+    "media_id": {
+      "type": "string"
+    },
+    "needs_visual": {
+      "type": "boolean"
+    },
+    "needs_audio": {
+      "type": "boolean"
+    },
+    "compatibility_profile": {
+      "type": "string",
+      "minLength": 1
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "attempt_id": {
+      "type": "string"
+    },
+    "extensions": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "media_id",
+    "needs_visual",
+    "needs_audio",
+    "compatibility_profile",
+    "run_id",
+    "attempt_id",
+    "extensions"
+  ],
+  "additionalProperties": false
+}

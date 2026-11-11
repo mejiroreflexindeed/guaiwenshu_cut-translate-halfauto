@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/Attestation.schema.json",
+  "title": "Attestation",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "attestation_id": {
+      "type": "string"
+    },
+    "revision_id": {
+      "type": "string"
+    },
+    "subtitle_sha256": {
+      "type": "string"
+    },
+    "media_id": {
+      "type": "string"
+    },
+    "scopes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "text",
+          "timing",
+          "style"
+        ]
+      },
+      "minItems": 1
+    },
+    "actor": {
+      "type": "string",
+      "enum": [
+        "user"
+      ]
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "note": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "attestation_id",
+    "revision_id",
+    "subtitle_sha256",
+    "media_id",
+    "scopes",
+    "actor",
+    "created_at",
+    "note"
+  ],
+  "additionalProperties": false
+}

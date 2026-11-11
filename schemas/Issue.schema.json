@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/Issue.schema.json",
+  "title": "Issue",
+  "type": "object",
+  "properties": {
+    "issue_id": {
+      "type": "string"
+    },
+    "rule_id": {
+      "type": "string"
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "ERROR",
+        "WARNING",
+        "INFO"
+      ]
+    },
+    "revision_id": {
+      "type": "string"
+    },
+    "cue_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "start_ms": {
+      "oneOf": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "end_ms": {
+      "oneOf": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "source_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "observed": {},
+    "threshold": {},
+    "message": {
+      "type": "string"
+    },
+    "recommended_action": {
+      "type": "string"
+    },
+    "verification": {
+      "type": "string",
+      "enum": [
+        "measured",
+        "inferred",
+        "unknown"
+      ]
+    }
+  },
+  "required": [
+    "issue_id",
+    "rule_id",
+    "severity",
+    "revision_id",
+    "cue_ids",
+    "start_ms",
+    "end_ms",
+    "source_refs",
+    "observed",
+    "threshold",
+    "message",
+    "recommended_action",
+    "verification"
+  ],
+  "additionalProperties": false
+}

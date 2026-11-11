@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/ConfigSnapshot.schema.json",
+  "title": "ConfigSnapshot",
+  "type": "object",
+  "properties": {
+    "app_config": {
+      "$ref": "AppConfig.schema.json"
+    },
+    "engine_settings": {
+      "type": "object"
+    },
+    "dictionary_revision_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "resource_refs": {
+      "type": "array",
+      "items": {
+        "$ref": "ResourceRef.schema.json"
+      }
+    },
+    "accepted_dictionary_warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "config_sha256": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "app_config",
+    "engine_settings",
+    "dictionary_revision_id",
+    "resource_refs",
+    "accepted_dictionary_warnings",
+    "config_sha256"
+  ],
+  "additionalProperties": false
+}

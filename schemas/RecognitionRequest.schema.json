@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/RecognitionRequest.schema.json",
+  "title": "RecognitionRequest",
+  "type": "object",
+  "properties": {
+    "run_id": {
+      "type": "string"
+    },
+    "media_id": {
+      "type": "string"
+    },
+    "recognition_mode": {
+      "type": "string",
+      "enum": [
+        "combined",
+        "speech_only",
+        "visual_only",
+        "supplied_source"
+      ]
+    },
+    "video_artifact": {
+      "oneOf": [
+        {
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "audio_artifact": {
+      "oneOf": [
+        {
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "roi": {
+      "$ref": "ROI.schema.json"
+    },
+    "engine_settings": {
+      "type": "object"
+    },
+    "resource_refs": {
+      "type": "array",
+      "items": {
+        "$ref": "ResourceRef.schema.json"
+      }
+    }
+  },
+  "required": [
+    "run_id",
+    "media_id",
+    "recognition_mode",
+    "video_artifact",
+    "audio_artifact",
+    "roi",
+    "engine_settings",
+    "resource_refs"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,4 @@
+# Legacy-only group: Jianying UI automation and window capture (plan D16 keeps the source, v2 does not import it).
+pywinauto==0.6.9; sys_platform == "win32"
+pywin32==312; sys_platform == "win32"
+Pillow==12.2.0

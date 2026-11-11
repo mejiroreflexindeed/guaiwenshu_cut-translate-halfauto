@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/SegmentSet.schema.json",
+  "title": "SegmentSet",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "source_revision_id": {
+      "type": "string"
+    },
+    "media_id": {
+      "type": "string"
+    },
+    "origin": {
+      "type": "string",
+      "enum": [
+        "machine",
+        "human"
+      ]
+    },
+    "recognition_mode": {
+      "type": "string",
+      "enum": [
+        "combined",
+        "speech_only",
+        "visual_only",
+        "supplied_source"
+      ]
+    },
+    "timing_mode": {
+      "type": "string",
+      "enum": [
+        "mixed",
+        "screen",
+        "speech"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "OK",
+        "EMPTY"
+      ]
+    },
+    "segments": {
+      "type": "array",
+      "items": {
+        "$ref": "Segment.schema.json"
+      }
+    },
+    "parents": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "visual_events": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "unresolved_visual_events": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "coverage": {
+      "type": "object"
+    },
+    "extensions": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "source_revision_id",
+    "media_id",
+    "origin",
+    "recognition_mode",
+    "timing_mode",
+    "status",
+    "segments",
+    "parents",
+    "visual_events",
+    "unresolved_visual_events",
+    "coverage",
+    "extensions"
+  ],
+  "additionalProperties": false
+}

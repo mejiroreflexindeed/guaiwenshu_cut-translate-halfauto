@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/MediaManifest.schema.json",
+  "title": "MediaManifest",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "registration",
+        "derived",
+        "download"
+      ]
+    },
+    "media_id": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "media_revision": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "signature": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "$ref": "ArtifactRef.schema.json"
+      }
+    },
+    "committed_at": {
+      "type": "string"
+    },
+    "extensions": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "kind",
+    "media_id",
+    "media_revision",
+    "signature",
+    "outputs",
+    "committed_at",
+    "extensions"
+  ],
+  "additionalProperties": false
+}

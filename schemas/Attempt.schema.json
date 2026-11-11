@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/Attempt.schema.json",
+  "title": "Attempt",
+  "type": "object",
+  "properties": {
+    "attempt_id": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "PENDING",
+        "RUNNING",
+        "DONE",
+        "FAILED",
+        "INTERRUPTED",
+        "CANCELLED",
+        "SKIPPED"
+      ]
+    },
+    "started_at": {
+      "type": "string"
+    },
+    "ended_at": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "input_signature": {
+      "type": "string"
+    },
+    "output_manifest": {
+      "oneOf": [
+        {
+          "$ref": "ArtifactRef.schema.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "error": {
+      "oneOf": [
+        {
+          "$ref": "ErrorObject.schema.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "attempt_id",
+    "status",
+    "started_at",
+    "ended_at",
+    "input_signature",
+    "output_manifest",
+    "error"
+  ],
+  "additionalProperties": false
+}

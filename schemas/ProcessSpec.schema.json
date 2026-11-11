@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/ProcessSpec.schema.json",
+  "title": "ProcessSpec",
+  "type": "object",
+  "properties": {
+    "executable": {
+      "type": "string",
+      "minLength": 1
+    },
+    "argv": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "cwd": {
+      "type": "string",
+      "minLength": 1
+    },
+    "env_overrides": {
+      "type": "object"
+    },
+    "stdin_mode": {
+      "type": "string",
+      "enum": [
+        "none",
+        "pipe"
+      ]
+    },
+    "log_dir": {
+      "type": "string",
+      "minLength": 1
+    },
+    "owner_token": {
+      "type": "string",
+      "minLength": 1
+    },
+    "capability_id": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "executable",
+    "argv",
+    "cwd",
+    "env_overrides",
+    "stdin_mode",
+    "log_dir",
+    "owner_token",
+    "capability_id"
+  ],
+  "additionalProperties": false
+}

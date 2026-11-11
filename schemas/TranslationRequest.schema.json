@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/TranslationRequest.schema.json",
+  "title": "TranslationRequest",
+  "type": "object",
+  "properties": {
+    "run_id": {
+      "type": "string"
+    },
+    "source_revision_id": {
+      "type": "string"
+    },
+    "segments_ref": {
+      "$ref": "ArtifactRef.schema.json"
+    },
+    "config_snapshot": {
+      "$ref": "ConfigSnapshot.schema.json"
+    },
+    "checkpoint_dir": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "run_id",
+    "source_revision_id",
+    "segments_ref",
+    "config_snapshot",
+    "checkpoint_dir"
+  ],
+  "additionalProperties": false
+}

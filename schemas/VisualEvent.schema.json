@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/VisualEvent.schema.json",
+  "title": "VisualEvent",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ordinal": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "start_ms": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "end_ms": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "text": {
+      "type": "string"
+    },
+    "score": {
+      "oneOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "score_kind": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "boxes": {
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {}
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "frame_refs": {
+      "type": "array",
+      "items": {
+        "$ref": "FrameRef.schema.json"
+      }
+    },
+    "boundary_evidence": {
+      "type": "string"
+    },
+    "flags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "id",
+    "ordinal",
+    "start_ms",
+    "end_ms",
+    "text",
+    "score",
+    "score_kind",
+    "boxes",
+    "frame_refs",
+    "boundary_evidence",
+    "flags"
+  ],
+  "additionalProperties": false
+}

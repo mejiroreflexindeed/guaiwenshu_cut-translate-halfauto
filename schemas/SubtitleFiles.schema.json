@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/SubtitleFiles.schema.json",
+  "title": "SubtitleFiles",
+  "type": "object",
+  "properties": {
+    "srt": {
+      "$ref": "ArtifactRef.schema.json"
+    },
+    "ass": {
+      "$ref": "ArtifactRef.schema.json"
+    }
+  },
+  "required": [
+    "srt",
+    "ass"
+  ],
+  "additionalProperties": false
+}

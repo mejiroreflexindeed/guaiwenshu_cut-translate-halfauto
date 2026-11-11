@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/SourceRevision.schema.json",
+  "title": "SourceRevision",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "revision_id": {
+      "type": "string"
+    },
+    "project_id": {
+      "type": "string"
+    },
+    "media_id": {
+      "type": "string"
+    },
+    "parent_revision_id": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "origin": {
+      "type": "string",
+      "enum": [
+        "machine",
+        "human"
+      ]
+    },
+    "source_subtitle_ref": {
+      "$ref": "ArtifactRef.schema.json"
+    },
+    "segments_ref": {
+      "$ref": "ArtifactRef.schema.json"
+    },
+    "recognition_refs": {
+      "type": "array",
+      "items": {
+        "$ref": "ArtifactRef.schema.json"
+      }
+    },
+    "provenance_status": {
+      "type": "string",
+      "enum": [
+        "exact",
+        "partial",
+        "unmapped"
+      ]
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "extensions": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "revision_id",
+    "project_id",
+    "media_id",
+    "parent_revision_id",
+    "origin",
+    "source_subtitle_ref",
+    "segments_ref",
+    "recognition_refs",
+    "provenance_status",
+    "created_at",
+    "extensions"
+  ],
+  "additionalProperties": false
+}

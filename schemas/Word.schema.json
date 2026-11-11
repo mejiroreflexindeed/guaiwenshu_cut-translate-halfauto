@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/Word.schema.json",
+  "title": "Word",
+  "type": "object",
+  "properties": {
+    "parent_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "char_start": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "char_end": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "start_ms": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "end_ms": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "raw_clock_ref": {
+      "type": "string"
+    },
+    "timing_valid": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "parent_id",
+    "char_start",
+    "char_end",
+    "start_ms",
+    "end_ms",
+    "raw_clock_ref",
+    "timing_valid"
+  ],
+  "additionalProperties": false
+}

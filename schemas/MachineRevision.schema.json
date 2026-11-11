@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/MachineRevision.schema.json",
+  "title": "MachineRevision",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "revision_id": {
+      "type": "string"
+    },
+    "project_id": {
+      "type": "string"
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "media_id": {
+      "type": "string"
+    },
+    "source_revision_id": {
+      "type": "string"
+    },
+    "subtitle_files": {
+      "$ref": "SubtitleFiles.schema.json"
+    },
+    "translations_ref": {
+      "$ref": "ArtifactRef.schema.json"
+    },
+    "quality_ref": {
+      "$ref": "ArtifactRef.schema.json"
+    },
+    "raw_evidence_refs": {
+      "type": "array",
+      "items": {
+        "$ref": "ArtifactRef.schema.json"
+      }
+    },
+    "created_at": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "revision_id",
+    "project_id",
+    "run_id",
+    "media_id",
+    "source_revision_id",
+    "subtitle_files",
+    "translations_ref",
+    "quality_ref",
+    "raw_evidence_refs",
+    "created_at"
+  ],
+  "additionalProperties": false
+}

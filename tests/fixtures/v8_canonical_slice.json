@@ -1,0 +1,428 @@
+{
+ "note": "canonical v8 output (segmentation_version 8) of the recovered native-clock slice from tests/subtitle_segments_test.py; frozen by W04 from the baseline algorithm",
+ "segmentation_version": 8,
+ "input": {
+  "speech": [
+   [
+    23600,
+    25680,
+    "ねえこれ、速攻ホテル前"
+   ],
+   [
+    25680,
+    28060,
+    "ある男子服だとさらにデカく見える"
+   ]
+  ],
+  "pages": [
+   [
+    23830,
+    24630,
+    "ねえこれ…"
+   ],
+   [
+    24630,
+    25990,
+    "ソッコーホテルマエ!"
+   ],
+   [
+    25990,
+    28360,
+    "アルグン私服とらデカく見る"
+   ]
+  ],
+  "clocks": {
+   "1": [
+    [
+     0,
+     1,
+     23660,
+     23780
+    ],
+    [
+     1,
+     2,
+     23780,
+     23890
+    ],
+    [
+     2,
+     4,
+     24010,
+     24330
+    ],
+    [
+     5,
+     6,
+     24510,
+     24690
+    ],
+    [
+     6,
+     7,
+     24690,
+     24870
+    ],
+    [
+     7,
+     8,
+     24870,
+     25030
+    ],
+    [
+     8,
+     9,
+     25090,
+     25170
+    ],
+    [
+     9,
+     10,
+     25250,
+     25410
+    ],
+    [
+     10,
+     11,
+     25410,
+     25610
+    ]
+   ],
+   "2": [
+    [
+     0,
+     2,
+     25740,
+     25970
+    ],
+    [
+     2,
+     3,
+     25970,
+     26100
+    ],
+    [
+     3,
+     4,
+     26130,
+     26250
+    ],
+    [
+     4,
+     5,
+     26250,
+     26390
+    ],
+    [
+     5,
+     6,
+     26390,
+     26530
+    ],
+    [
+     6,
+     7,
+     26530,
+     26670
+    ],
+    [
+     7,
+     8,
+     26670,
+     26810
+    ],
+    [
+     8,
+     9,
+     26810,
+     26950
+    ],
+    [
+     9,
+     10,
+     26950,
+     27090
+    ],
+    [
+     10,
+     11,
+     27090,
+     27230
+    ],
+    [
+     11,
+     12,
+     27230,
+     27370
+    ],
+    [
+     12,
+     13,
+     27370,
+     27510
+    ],
+    [
+     13,
+     14,
+     27510,
+     27650
+    ],
+    [
+     14,
+     16,
+     27650,
+     28060
+    ]
+   ]
+  }
+ },
+ "mixed": {
+  "canonical": [
+   [
+    "cue_793bfeb06f91b730dcda7624",
+    1,
+    23830,
+    24630,
+    "ねえこれ、",
+    [
+     [
+      "speech_c9982a75dc810bda92e56a8f",
+      0,
+      5
+     ]
+    ],
+    [
+     "visual_ab713a6c9bd7e5afef1eaf03"
+    ],
+    "visual_page",
+    []
+   ],
+   [
+    "cue_a60ffd9463b2f49e3b248c34",
+    2,
+    24630,
+    25990,
+    "速攻ホテル前",
+    [
+     [
+      "speech_c9982a75dc810bda92e56a8f",
+      5,
+      11
+     ]
+    ],
+    [
+     "visual_63a2f88f3b392a95c92b775c"
+    ],
+    "visual_page",
+    [
+     "CHECK",
+     "TEXT_ALIGNMENT_AMBIGUOUS",
+     "TEXT_CONFLICT"
+    ]
+   ],
+   [
+    "cue_4f034308688a157281aa6575",
+    3,
+    25990,
+    28360,
+    "ある男子服だとさらにデカく見える",
+    [
+     [
+      "speech_3dfc4f6d56ed8b8acb7f2d68",
+      0,
+      16
+     ]
+    ],
+    [
+     "visual_dca41fcb10af1c6172889605"
+    ],
+    "visual_page",
+    [
+     "CHECK",
+     "TEXT_ALIGNMENT_AMBIGUOUS",
+     "TEXT_CONFLICT"
+    ]
+   ]
+  ],
+  "coverage": [
+   {
+    "parent_id": "speech_c9982a75dc810bda92e56a8f",
+    "total_chars": 11,
+    "covered_chars": 11,
+    "missing_chars": []
+   },
+   {
+    "parent_id": "speech_3dfc4f6d56ed8b8acb7f2d68",
+    "total_chars": 16,
+    "covered_chars": 16,
+    "missing_chars": []
+   }
+  ]
+ },
+ "screen": {
+  "canonical": [
+   [
+    "cue_793bfeb06f91b730dcda7624",
+    1,
+    23830,
+    24630,
+    "ねえこれ、",
+    [
+     [
+      "speech_c9982a75dc810bda92e56a8f",
+      0,
+      5
+     ]
+    ],
+    [
+     "visual_ab713a6c9bd7e5afef1eaf03"
+    ],
+    "visual_page",
+    []
+   ],
+   [
+    "cue_a60ffd9463b2f49e3b248c34",
+    2,
+    24630,
+    25990,
+    "速攻ホテル前",
+    [
+     [
+      "speech_c9982a75dc810bda92e56a8f",
+      5,
+      11
+     ]
+    ],
+    [
+     "visual_63a2f88f3b392a95c92b775c"
+    ],
+    "visual_page",
+    [
+     "CHECK",
+     "TEXT_ALIGNMENT_AMBIGUOUS",
+     "TEXT_CONFLICT"
+    ]
+   ],
+   [
+    "cue_4f034308688a157281aa6575",
+    3,
+    25990,
+    28360,
+    "ある男子服だとさらにデカく見える",
+    [
+     [
+      "speech_3dfc4f6d56ed8b8acb7f2d68",
+      0,
+      16
+     ]
+    ],
+    [
+     "visual_dca41fcb10af1c6172889605"
+    ],
+    "visual_page",
+    [
+     "CHECK",
+     "TEXT_ALIGNMENT_AMBIGUOUS",
+     "TEXT_CONFLICT"
+    ]
+   ]
+  ],
+  "coverage": [
+   {
+    "parent_id": "speech_c9982a75dc810bda92e56a8f",
+    "total_chars": 11,
+    "covered_chars": 11,
+    "missing_chars": []
+   },
+   {
+    "parent_id": "speech_3dfc4f6d56ed8b8acb7f2d68",
+    "total_chars": 16,
+    "covered_chars": 16,
+    "missing_chars": []
+   }
+  ]
+ },
+ "speech": {
+  "canonical": [
+   [
+    "cue_793bfeb06f91b730dcda7624",
+    1,
+    23660,
+    24330,
+    "ねえこれ、",
+    [
+     [
+      "speech_c9982a75dc810bda92e56a8f",
+      0,
+      5
+     ]
+    ],
+    [
+     "visual_ab713a6c9bd7e5afef1eaf03"
+    ],
+    "speech_words",
+    []
+   ],
+   [
+    "cue_a60ffd9463b2f49e3b248c34",
+    2,
+    24510,
+    25610,
+    "速攻ホテル前",
+    [
+     [
+      "speech_c9982a75dc810bda92e56a8f",
+      5,
+      11
+     ]
+    ],
+    [
+     "visual_63a2f88f3b392a95c92b775c"
+    ],
+    "speech_words",
+    [
+     "CHECK",
+     "TEXT_ALIGNMENT_AMBIGUOUS",
+     "TEXT_CONFLICT"
+    ]
+   ],
+   [
+    "cue_4f034308688a157281aa6575",
+    3,
+    25740,
+    28060,
+    "ある男子服だとさらにデカく見える",
+    [
+     [
+      "speech_3dfc4f6d56ed8b8acb7f2d68",
+      0,
+      16
+     ]
+    ],
+    [
+     "visual_dca41fcb10af1c6172889605"
+    ],
+    "speech_words",
+    [
+     "CHECK",
+     "TEXT_ALIGNMENT_AMBIGUOUS",
+     "TEXT_CONFLICT"
+    ]
+   ]
+  ],
+  "coverage": [
+   {
+    "parent_id": "speech_c9982a75dc810bda92e56a8f",
+    "total_chars": 11,
+    "covered_chars": 11,
+    "missing_chars": []
+   },
+   {
+    "parent_id": "speech_3dfc4f6d56ed8b8acb7f2d68",
+    "total_chars": 16,
+    "covered_chars": 16,
+    "missing_chars": []
+   }
+  ]
+ }
+}

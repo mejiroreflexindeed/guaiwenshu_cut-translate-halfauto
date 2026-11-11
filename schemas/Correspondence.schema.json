@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/Correspondence.schema.json",
+  "title": "Correspondence",
+  "type": "object",
+  "properties": {
+    "edited_cue_ordinal": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "source_cue_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "mapping_status": {
+      "type": "string",
+      "enum": [
+        "exact",
+        "candidate",
+        "unmapped"
+      ]
+    },
+    "reason": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "edited_cue_ordinal",
+    "source_cue_ids",
+    "mapping_status",
+    "reason"
+  ],
+  "additionalProperties": false
+}

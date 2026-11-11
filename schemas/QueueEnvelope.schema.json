@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/QueueEnvelope.schema.json",
+  "title": "QueueEnvelope",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "request": {
+      "$ref": "JobRequest.schema.json"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "QUEUED",
+        "RUNNING",
+        "COMPLETED",
+        "FAILED",
+        "INTERRUPTED",
+        "CANCELLED"
+      ]
+    },
+    "run_id": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "last_error": {
+      "oneOf": [
+        {
+          "$ref": "ErrorObject.schema.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "updated_at": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "request",
+    "status",
+    "run_id",
+    "last_error",
+    "created_at",
+    "updated_at"
+  ],
+  "additionalProperties": false
+}

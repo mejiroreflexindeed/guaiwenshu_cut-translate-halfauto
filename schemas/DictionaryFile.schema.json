@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/DictionaryFile.schema.json",
+  "title": "DictionaryFile",
+  "type": "object",
+  "properties": {
+    "role": {
+      "type": "string",
+      "enum": [
+        "pre",
+        "gpt",
+        "post",
+        "glossary",
+        "style_prompt",
+        "guideline",
+        "project_config"
+      ]
+    },
+    "original_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "origin": {
+      "type": "string",
+      "enum": [
+        "user_file",
+        "bundled_default"
+      ]
+    },
+    "artifact": {
+      "$ref": "ArtifactRef.schema.json"
+    }
+  },
+  "required": [
+    "role",
+    "original_name",
+    "origin",
+    "artifact"
+  ],
+  "additionalProperties": false
+}

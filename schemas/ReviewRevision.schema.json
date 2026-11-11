@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/ReviewRevision.schema.json",
+  "title": "ReviewRevision",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "revision_id": {
+      "type": "string"
+    },
+    "project_id": {
+      "type": "string"
+    },
+    "media_id": {
+      "type": "string"
+    },
+    "base_revision_id": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "session_id": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "original_file_ref": {
+      "$ref": "ArtifactRef.schema.json"
+    },
+    "validated_view_ref": {
+      "$ref": "ArtifactRef.schema.json"
+    },
+    "format": {
+      "type": "string",
+      "enum": [
+        "srt",
+        "ass"
+      ]
+    },
+    "encoding": {
+      "type": "string",
+      "minLength": 1
+    },
+    "provenance_status": {
+      "type": "string",
+      "enum": [
+        "exact",
+        "partial",
+        "unmapped"
+      ]
+    },
+    "correspondences_ref": {
+      "$ref": "ArtifactRef.schema.json"
+    },
+    "quality_ref": {
+      "$ref": "ArtifactRef.schema.json"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "extensions": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "revision_id",
+    "project_id",
+    "media_id",
+    "base_revision_id",
+    "session_id",
+    "original_file_ref",
+    "validated_view_ref",
+    "format",
+    "encoding",
+    "provenance_status",
+    "correspondences_ref",
+    "quality_ref",
+    "created_at",
+    "extensions"
+  ],
+  "additionalProperties": false
+}

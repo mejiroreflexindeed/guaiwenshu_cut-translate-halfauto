@@ -663,6 +663,8 @@ class AutoRoastApp(tk.Tk):
         self.notebook.add(self.axis_tab, text="精准字幕轴")
         self.notebook.add(self.translation_tab, text="机器翻译")
         self.notebook.add(self.output_tab, text="合轴与剪映")
+        self.v2_tab = ttk.Frame(self.notebook, padding=10)
+        self.notebook.add(self.v2_tab, text="新版项目与校对")
 
         self._build_home_tab()
         self._build_tools_tab()
@@ -671,11 +673,22 @@ class AutoRoastApp(tk.Tk):
         self._build_axis_tab()
         self._build_translation_tab()
         self._build_output_tab()
+        self._build_v2_tab()
 
         status = ttk.Frame(self, style="Status.TLabel")
         status.pack(fill=tk.X, side=tk.BOTTOM)
         ttk.Label(status, textvariable=self.status_detail_var, style="Status.TLabel").pack(side=tk.LEFT, fill=tk.X, expand=True)
         ttk.Label(status, text=f"工作区: {ROOT}", style="Status.TLabel").pack(side=tk.RIGHT)
+
+    def _build_v2_tab(self) -> None:
+        """v2 projects, human revisions and exports (W08). Its settings live in their own file; this window's config is not rewritten."""
+        try:
+            from upgrade.gui import V2Panel
+        except Exception as exc:  # the old window keeps working without the v2 code
+            ttk.Label(self.v2_tab, text=f"新版项目面板无法加载：{exc}").pack(anchor="w")
+            return
+        self.v2_panel = V2Panel(self.v2_tab, settings_path=CONFIG_PATH.parent / "roast_v2_gui.local.json")
+        self.v2_panel.pack(fill=tk.BOTH, expand=True)
 
     def _build_tools_tab(self) -> None:
         tab = self.tools_tab
@@ -2394,6 +2407,9 @@ class AutoRoastApp(tk.Tk):
         self.after(120, self._drain_messages)
 
     def _on_close(self) -> None:
+        panel = getattr(self, "v2_panel", None)
+        if panel is not None and not panel.confirm_close():   # v2 queue/export running: stop it first or go back
+            return
         if self.batch_running:
             if not messagebox.askyesno("任务仍在进行", "关闭软件会停止当前任务，确认关闭吗？"):
                 return

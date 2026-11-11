@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/MediaInput.schema.json",
+  "title": "MediaInput",
+  "type": "object",
+  "properties": {
+    "input": {
+      "$ref": "JobInput.schema.json"
+    },
+    "selected_video_stream": {
+      "oneOf": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "selected_audio_stream": {
+      "oneOf": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "project_id": {
+      "type": "string"
+    },
+    "extensions": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "input",
+    "selected_video_stream",
+    "selected_audio_stream",
+    "project_id",
+    "extensions"
+  ],
+  "additionalProperties": false
+}

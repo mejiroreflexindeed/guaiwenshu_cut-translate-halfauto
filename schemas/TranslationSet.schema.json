@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/TranslationSet.schema.json",
+  "title": "TranslationSet",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "source_revision_id": {
+      "type": "string"
+    },
+    "translation_signature": {
+      "type": "string"
+    },
+    "dictionary_revision_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "engine_ref": {
+      "$ref": "ResourceRef.schema.json"
+    },
+    "model_ref": {
+      "$ref": "ResourceRef.schema.json"
+    },
+    "parameters": {
+      "type": "object"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "OK",
+        "EMPTY"
+      ]
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "TranslationRecord.schema.json"
+      }
+    },
+    "extensions": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "source_revision_id",
+    "translation_signature",
+    "dictionary_revision_id",
+    "engine_ref",
+    "model_ref",
+    "parameters",
+    "status",
+    "records",
+    "extensions"
+  ],
+  "additionalProperties": false
+}

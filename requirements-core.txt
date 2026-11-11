@@ -1,0 +1,4 @@
+# Core runtime for the v2 workflow and the legacy pipeline modules (plan 1.1, section 12.2).
+# PyYAML was missing from the original list although voice_dictionary.py and magia_timeline_adapter.py import it unconditionally.
+PyYAML==6.0.3
+yt-dlp==2026.7.4

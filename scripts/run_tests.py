@@ -11,6 +11,7 @@ root = Path(__file__).resolve().parents[1]
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument("tests", nargs="*", help="Specific test filenames; default: all tests")
 parser.add_argument("--ffmpeg", help="FFmpeg executable for synthetic media fixtures")
+parser.add_argument("--ffprobe", help="ffprobe executable for the v2 media tests (default: FFPROBE_BINARY, PATH, or next to FFmpeg)")
 args = parser.parse_args()
 available = {p.name: p for p in (root / "tests").glob("*.py")}
 names = args.tests or sorted(available)
@@ -34,6 +35,15 @@ if not ffmpeg:
         pass
 if ffmpeg:
     environment["FFMPEG_BINARY"] = ffmpeg
+ffprobe = args.ffprobe or environment.get("FFPROBE_BINARY") or shutil.which("ffprobe")
+if not ffprobe and ffmpeg:
+    sibling = Path(ffmpeg).with_name("ffprobe.exe" if os.name == "nt" else "ffprobe")
+    ffprobe = str(sibling) if sibling.is_file() else None
+if ffprobe:
+    environment["FFPROBE_BINARY"] = ffprobe
+else:
+    # the v2 media tests need a real ffprobe; without one they are reported as skipped inside their logs, not as passed
+    print("NOTE no ffprobe found: upgrade_media_test.py / upgrade_stages_test.py will skip their real-media cases", flush=True)
 (root / "test-results").mkdir(exist_ok=True)
 results = []
 for name in names:

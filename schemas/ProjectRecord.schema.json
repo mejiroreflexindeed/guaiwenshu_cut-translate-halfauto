@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/ProjectRecord.schema.json",
+  "title": "ProjectRecord",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "project_id": {
+      "type": "string"
+    },
+    "display_name": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "media_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "run_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "machine_revision_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "source_revision_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "review_revision_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "export_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "last_selected_revision_id": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "extensions": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "project_id",
+    "display_name",
+    "created_at",
+    "media_ids",
+    "run_ids",
+    "machine_revision_ids",
+    "source_revision_ids",
+    "review_revision_ids",
+    "export_ids",
+    "last_selected_revision_id",
+    "extensions"
+  ],
+  "additionalProperties": false
+}

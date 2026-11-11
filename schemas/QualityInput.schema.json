@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/QualityInput.schema.json",
+  "title": "QualityInput",
+  "type": "object",
+  "properties": {
+    "revision_id": {
+      "type": "string"
+    },
+    "revision_kind": {
+      "type": "string",
+      "enum": [
+        "machine",
+        "source",
+        "review"
+      ]
+    },
+    "media_record": {
+      "oneOf": [
+        {
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "subtitle_ref": {
+      "$ref": "ArtifactRef.schema.json"
+    },
+    "parsed_view": {
+      "$ref": "SubtitleView.schema.json"
+    },
+    "source_revision": {
+      "oneOf": [
+        {
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "recognition_refs": {
+      "type": "array",
+      "items": {
+        "$ref": "ArtifactRef.schema.json"
+      }
+    },
+    "translation_ref": {
+      "oneOf": [
+        {
+          "$ref": "ArtifactRef.schema.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "rule_config": {
+      "$ref": "QualityConfig.schema.json"
+    },
+    "attestations": {
+      "type": "array",
+      "items": {
+        "$ref": "Attestation.schema.json"
+      }
+    },
+    "extensions": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "revision_id",
+    "revision_kind",
+    "media_record",
+    "subtitle_ref",
+    "parsed_view",
+    "source_revision",
+    "recognition_refs",
+    "translation_ref",
+    "rule_config",
+    "attestations",
+    "extensions"
+  ],
+  "additionalProperties": false
+}

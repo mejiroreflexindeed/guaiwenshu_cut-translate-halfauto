@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/Clock.schema.json",
+  "title": "Clock",
+  "type": "object",
+  "properties": {
+    "origin_pts": {
+      "type": "integer"
+    },
+    "origin_time_base_num": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "origin_time_base_den": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "origin_kind": {
+      "type": "string",
+      "enum": [
+        "first_presented_video_frame"
+      ]
+    },
+    "normalized_media_id": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "mapping_kind": {
+      "type": "string",
+      "enum": [
+        "identity",
+        "constant_offset",
+        "verified_frame_map"
+      ]
+    },
+    "mapping_ref": {
+      "oneOf": [
+        {
+          "$ref": "ArtifactRef.schema.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "verified": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "origin_pts",
+    "origin_time_base_num",
+    "origin_time_base_den",
+    "origin_kind",
+    "normalized_media_id",
+    "mapping_kind",
+    "mapping_ref",
+    "verified"
+  ],
+  "additionalProperties": false
+}

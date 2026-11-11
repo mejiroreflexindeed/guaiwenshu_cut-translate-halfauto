@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/FrameRef.schema.json",
+  "title": "FrameRef",
+  "type": "object",
+  "properties": {
+    "pts": {
+      "type": "integer"
+    },
+    "time_base_num": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "time_base_den": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1
+    },
+    "image": {
+      "$ref": "ArtifactRef.schema.json"
+    }
+  },
+  "required": [
+    "pts",
+    "time_base_num",
+    "time_base_den",
+    "purpose",
+    "image"
+  ],
+  "additionalProperties": false
+}

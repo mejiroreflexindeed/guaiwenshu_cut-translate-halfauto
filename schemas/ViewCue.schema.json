@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/ViewCue.schema.json",
+  "title": "ViewCue",
+  "type": "object",
+  "properties": {
+    "ordinal": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "cue_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "dialogue",
+        "comment"
+      ]
+    },
+    "line": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "start_ms": {
+      "oneOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "end_ms": {
+      "oneOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "text": {
+      "type": "string"
+    },
+    "fields": {
+      "type": "object"
+    },
+    "layer": {
+      "oneOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "style": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "name": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "drawing": {
+      "type": "boolean"
+    },
+    "notes": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "ordinal",
+    "cue_id",
+    "kind",
+    "line",
+    "start_ms",
+    "end_ms",
+    "text",
+    "fields",
+    "layer",
+    "style",
+    "name",
+    "drawing",
+    "notes"
+  ],
+  "additionalProperties": false
+}

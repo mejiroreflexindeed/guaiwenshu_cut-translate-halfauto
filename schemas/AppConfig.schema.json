@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/AppConfig.schema.json",
+  "title": "AppConfig",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "data_root": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ascii_temp_root": {
+      "type": "string",
+      "minLength": 1
+    },
+    "resources_file": {
+      "type": "string",
+      "minLength": 1
+    },
+    "editor_srt": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "editor_ass": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "defaults": {
+      "$ref": "AppDefaults.schema.json"
+    },
+    "quality": {
+      "$ref": "QualityConfig.schema.json"
+    },
+    "extensions": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "data_root",
+    "ascii_temp_root",
+    "resources_file",
+    "editor_srt",
+    "editor_ass",
+    "defaults",
+    "quality",
+    "extensions"
+  ],
+  "additionalProperties": false
+}

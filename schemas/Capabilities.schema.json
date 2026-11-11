@@ -1,0 +1,137 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/Capabilities.schema.json",
+  "title": "Capabilities",
+  "type": "object",
+  "properties": {
+    "cpu": {
+      "oneOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "enum": [
+            "unknown",
+            "not_applicable"
+          ]
+        }
+      ]
+    },
+    "gpu_vulkan": {
+      "oneOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "enum": [
+            "unknown",
+            "not_applicable"
+          ]
+        }
+      ]
+    },
+    "gpu_cuda": {
+      "oneOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "enum": [
+            "unknown",
+            "not_applicable"
+          ]
+        }
+      ]
+    },
+    "word_timestamps": {
+      "oneOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "enum": [
+            "unknown",
+            "not_applicable"
+          ]
+        }
+      ]
+    },
+    "vad": {
+      "oneOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "enum": [
+            "unknown",
+            "not_applicable"
+          ]
+        }
+      ]
+    },
+    "ocr_scores": {
+      "oneOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "enum": [
+            "unknown",
+            "not_applicable"
+          ]
+        }
+      ]
+    },
+    "frame_pts": {
+      "oneOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "enum": [
+            "unknown",
+            "not_applicable"
+          ]
+        }
+      ]
+    },
+    "libass": {
+      "oneOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "enum": [
+            "unknown",
+            "not_applicable"
+          ]
+        }
+      ]
+    },
+    "json_probe": {
+      "oneOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "enum": [
+            "unknown",
+            "not_applicable"
+          ]
+        }
+      ]
+    }
+  },
+  "required": [
+    "cpu",
+    "gpu_vulkan",
+    "gpu_cuda",
+    "word_timestamps",
+    "vad",
+    "ocr_scores",
+    "frame_pts",
+    "libass",
+    "json_probe"
+  ],
+  "additionalProperties": false
+}

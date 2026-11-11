@@ -33,3 +33,6 @@ venv/
 *.wav
 *.mp3
 *.zip
+
+# W00+: private baseline/config snapshots stay local
+*.private.json

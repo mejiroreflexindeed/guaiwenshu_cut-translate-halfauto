@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/ReviewSession.schema.json",
+  "title": "ReviewSession",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "session_id": {
+      "type": "string"
+    },
+    "project_id": {
+      "type": "string"
+    },
+    "base_revision_id": {
+      "type": "string"
+    },
+    "base_subtitle_sha256": {
+      "type": "string"
+    },
+    "media_id": {
+      "type": "string"
+    },
+    "format": {
+      "type": "string",
+      "enum": [
+        "srt",
+        "ass"
+      ]
+    },
+    "edit_relative_path": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "session_id",
+    "project_id",
+    "base_revision_id",
+    "base_subtitle_sha256",
+    "media_id",
+    "format",
+    "edit_relative_path",
+    "created_at"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,509 @@
+{
+  "schema_version": 2,
+  "record_kind": "traceability_index",
+  "plan_version": "1.1",
+  "plan_path": "docs/architecture-audit/08-complete-upgrade-plan.md",
+  "baseline_commit": "1a9a0104defbd9881db3f9eded017ad7b1f96edc",
+  "frozen_at": "2026-11-08T00:00:00Z",
+  "note": "编号、名称和对应关系抄自计划 1.1 的第 2、11、13、14、15 节；本文件只做索引，不改变计划含义。status 只反映 W00 冻结时刻。",
+  "requirements": {
+    "FR01": {
+      "title": "本地视频、单视频 URL、已有源字幕输入",
+      "verification": [
+        "T01",
+        "T07"
+      ],
+      "work_packages": [
+        "W03",
+        "W08"
+      ],
+      "notes": [
+        "W08: v2 panel as a new tab of the existing tkinter window"
+      ]
+    },
+    "FR02": {
+      "title": "mixed/screen/speech + 纯画面模式",
+      "verification": [
+        "T03",
+        "T07"
+      ],
+      "work_packages": [
+        "W03"
+      ]
+    },
+    "FR03": {
+      "title": "日语识别、画面文字、翻译、词典",
+      "verification": [
+        "T03",
+        "T04",
+        "T07"
+      ],
+      "work_packages": [
+        "W03",
+        "W04"
+      ],
+      "notes": [
+        "W04: implemented and verified with fixtures/loopback; real engines pending W09"
+      ]
+    },
+    "FR04": {
+      "title": "SRT/ASS 与原文/复核输出",
+      "verification": [
+        "T03",
+        "T07"
+      ],
+      "work_packages": [
+        "W04"
+      ],
+      "notes": [
+        "W04: implemented and verified with fixtures/loopback; real engines pending W09"
+      ]
+    },
+    "FR05": {
+      "title": "外部人工检修",
+      "verification": [
+        "T05",
+        "T08"
+      ],
+      "work_packages": [
+        "W05",
+        "W08"
+      ],
+      "notes": [
+        "W05: review session / whole-file import / explicit attestation / revision resolution implemented and verified on fixtures (T05-W05); GUI entry W08; real Subtitle Edit / Aegisub round trip pending W09"
+      ]
+    },
+    "FR06": {
+      "title": "人工稿保护",
+      "verification": [
+        "T02",
+        "T05",
+        "T07"
+      ],
+      "work_packages": [
+        "W02",
+        "W05"
+      ],
+      "notes": [
+        "W05: human files are immutable whole-file revisions; their hashes are unchanged after re-recognition, re-translation and a dictionary change, and nothing merges into them (T05-W05)"
+      ]
+    },
+    "FR07": {
+      "title": "原文纠错与再翻译",
+      "verification": [
+        "T04",
+        "T05"
+      ],
+      "work_packages": [
+        "W04",
+        "W05"
+      ],
+      "notes": [
+        "W04: implemented and verified with fixtures/loopback; real engines pending W09",
+        "W05: a corrected source file becomes a complete human SourceRevision and is re-translated through supplied_source without OCR/ASR and without reusing old word clocks (T05-W05)"
+      ]
+    },
+    "FR08": {
+      "title": "质量检查",
+      "verification": [
+        "T03",
+        "T07"
+      ],
+      "work_packages": [
+        "W06"
+      ],
+      "notes": [
+        "W06: rule table QC01-QC23 with fixed default thresholds (null only turns soft hints off), quality_scope.json says what was not evaluated"
+      ]
+    },
+    "FR09": {
+      "title": "队列/取消/恢复",
+      "verification": [
+        "T02"
+      ],
+      "work_packages": [
+        "W02",
+        "W08"
+      ]
+    },
+    "FR10": {
+      "title": "可重复导出",
+      "verification": [
+        "T05",
+        "T06"
+      ],
+      "work_packages": [
+        "W05",
+        "W07"
+      ],
+      "notes": [
+        "W05: hash-verified revision resolution and independent version selection implemented (a superseded human revision still resolves); the export action itself is W07",
+        "W07: export --kind subtitles|mp4_burn|mkv_soft from an explicit revision, destination created once, manifest with per-file human status"
+      ]
+    },
+    "FR11": {
+      "title": "FFmpeg MP4/MKV",
+      "verification": [
+        "T06",
+        "T08"
+      ],
+      "work_packages": [
+        "W07"
+      ],
+      "notes": [
+        "W07: mp4_burn_sdr_v1 / mkv_soft_v1 with -copyts and the first-frame clock, validation per 7.5 incl. MKV subtitle extraction"
+      ]
+    },
+    "FR12": {
+      "title": "资源/配置管理",
+      "verification": [
+        "T01",
+        "T09"
+      ],
+      "work_packages": [
+        "W01",
+        "W03"
+      ]
+    },
+    "FR13": {
+      "title": "旧资产迁移",
+      "verification": [
+        "T05",
+        "T09"
+      ],
+      "work_packages": [
+        "W08"
+      ],
+      "notes": [
+        "W08: read-only legacy migration (roast migrate / 导入旧任务), old directory hash-checked before and after"
+      ]
+    },
+    "FR14": {
+      "title": "Windows 独立候选与 GitHub 发布准备",
+      "verification": [
+        "T09",
+        "W10-static"
+      ],
+      "work_packages": [
+        "W01",
+        "W09",
+        "W10"
+      ]
+    },
+    "FR15": {
+      "title": "日志/诊断",
+      "verification": [
+        "T01",
+        "T02",
+        "T09"
+      ],
+      "work_packages": [
+        "W01",
+        "W02"
+      ]
+    },
+    "FR16": {
+      "title": "范围及质量诚实标识",
+      "verification": [
+        "T01",
+        "T02",
+        "T03",
+        "T04",
+        "T05",
+        "T06",
+        "T07",
+        "T08",
+        "T09"
+      ],
+      "work_packages": [
+        "W06",
+        "W08"
+      ],
+      "notes": [
+        "W06: review.html/review.csv/quality.json per machine and human revision; boundary frames on demand (review frames)",
+        "W08: review report, working copy, editor hand-off, registration and confirmation from the window"
+      ]
+    }
+  },
+  "decisions": {
+    "D01": "保留 tkinter 主界面；只增加任务、版本、文件交付及设置入口",
+    "D02": "默认交付 SRT + ASS + 复核报告；默认不烧录、不打开剪映",
+    "D03": "SRT 首选 Subtitle Edit；ASS 首选 Aegisub；均为用户指定的外部程序",
+    "D04": "普通混合素材默认保持 v8 mixed；保留 screen、speech 原时间轴语义",
+    "D05": "新增明确的纯画面文字识别模式，允许没有音轨/没有 ASR",
+    "D06": "非商业默认工作流保留 Whisper large-v3 + 现有 VAD/时钟恢复、Magia、Sakura 3.7；模型与第三方引擎外置",
+    "D07": "保留 native 普通词典/用户 JSON/风格提示；不兼容语法列出具体行",
+    "D08": "人工中文稿整文件保存/登记；只读校验，可自由改字/轴/拆并/排序/样式",
+    "D09": "新机器结果永不覆盖人工稿；不自动合并新旧机器/人工内容",
+    "D10": "原文修订是完整源字幕版本，后续翻译使用该版本",
+    "D11": "单机、一个数据根一个执行器、重推理串行；排队持久化",
+    "D12": "工具、模型、用户数据外置；核心程序不依赖 D/G 盘固定位置",
+    "D13": "主程序支持显式 FFmpeg 硬字幕 MP4 和软字幕 MKV 出口，默认关闭",
+    "D14": "人工稿可单独导出；ASS 样式原字节保存；SRT 转换产生另一派生文件",
+    "D15": "不增加片长、句长、拼接条数硬上限；异常阅读速度/持续时间仅提示",
+    "D16": "保留旧剪映工程/人工使用；新默认流程不调用剪映自动化",
+    "D17": "保留现有算法和小型 JSON/JSONL 文件；新增少量深模块",
+    "D18": "GitHub 开源发布准备必做、用户自己非商业使用；独立候选/干净机验证必做；仓库不捆绑模型、第三方工具二进制、字体、用户素材",
+    "D19": "质量状态与执行状态分开；只有用户确认才能称人工已审",
+    "D20": "模型升级/第二 OCR 或 ASR 后端不属于本版必做；有专门变更单才加入"
+  },
+  "quality_rules": {
+    "QC01_PARSE": "ERROR",
+    "QC02_TIME": "ERROR",
+    "QC03_BOUNDS": "ERROR",
+    "QC04_IDENTITY": "ERROR",
+    "QC05_COVERAGE": "ERROR",
+    "QC06_ORDER": "ERROR",
+    "QC07_DURATION": "WARNING",
+    "QC08_SPEED": "WARNING",
+    "QC09_OVERLAP": "WARNING",
+    "QC10_OCR_SCORE": "WARNING",
+    "QC11_ASR_SCORE": "WARNING",
+    "QC12_SCORE_UNKNOWN": "INFO",
+    "QC13_OCR_CONTINUITY": "WARNING",
+    "QC14_SOURCE_CONFLICT": "WARNING",
+    "QC15_WORD_CLOCK": "WARNING",
+    "QC16_ACTIVITY_GAP": "WARNING",
+    "QC17_TRANSLATION": "ERROR",
+    "QC18_TERMS": "WARNING",
+    "QC19_UNCERTAIN": "WARNING",
+    "QC20_REVIEW_BASE": "INFO/WARNING",
+    "QC21_MEDIA_BINDING": "ERROR",
+    "QC22_FONT": "ERROR(视频出口)/WARNING(字幕)",
+    "QC23_EMPTY": "WARNING"
+  },
+  "work_packages": {
+    "W00": {
+      "title": "基线与执行规格冻结",
+      "depends_on": [],
+      "requirements": [
+        "FR01-FR16 基线"
+      ],
+      "verification": [
+        "static"
+      ],
+      "status": "COMPLETED",
+      "completion_record": "docs/upgrade/completion-W00.md"
+    },
+    "W01": {
+      "title": "运行时、配置、资源与存储基础",
+      "depends_on": [
+        "W00"
+      ],
+      "requirements": [
+        "FR12",
+        "FR14",
+        "FR15"
+      ],
+      "verification": [
+        "T01"
+      ],
+      "status": "COMPLETED_EXCEPT_B02",
+      "completion_record": "docs/upgrade/completion-W01.md",
+      "note": "T01 PASS on 3.10; 3.13 runtime items BLOCKED (B02)"
+    },
+    "W02": {
+      "title": "持久队列、进程所有权和恢复",
+      "depends_on": [
+        "W01"
+      ],
+      "requirements": [
+        "FR09",
+        "FR15",
+        "FR06"
+      ],
+      "verification": [
+        "T02"
+      ],
+      "status": "COMPLETED",
+      "completion_record": "docs/upgrade/completion-W02.md"
+    },
+    "W03": {
+      "title": "媒体坐标与两类识别接入",
+      "depends_on": [
+        "W02"
+      ],
+      "requirements": [
+        "FR01",
+        "FR02",
+        "FR03",
+        "FR12"
+      ],
+      "verification": [
+        "T03",
+        "T06"
+      ],
+      "status": "COMPLETED",
+      "completion_record": "docs/upgrade/completion-W03.md",
+      "note": "T03 的识别/时钟夹具部分与 T06 的媒体部分 PASS；真实 Whisper/Magia 引擎的整体验证按计划留 W09（执行机缺引擎，B01）"
+    },
+    "W04": {
+      "title": "主记录、词典、翻译和机器字幕",
+      "depends_on": [
+        "W03"
+      ],
+      "requirements": [
+        "FR03",
+        "FR04",
+        "FR07"
+      ],
+      "verification": [
+        "T03",
+        "T04"
+      ],
+      "milestone": "M1",
+      "status": "COMPLETED",
+      "completion_record": "docs/upgrade/completion-W04.md",
+      "note": "T03 segmentation/format part and T04 protocol part PASS with fixtures, real loopback HTTP and a scripted model-server process; real llama-server + Sakura model NOT_RUN (B01, W09); QUALITY_AND_COMMIT is the structural gate only (soft rules W06); milestone M1 reached"
+    },
+    "W05": {
+      "title": "人工中文/日文修订闭环",
+      "depends_on": [
+        "W04"
+      ],
+      "requirements": [
+        "FR05",
+        "FR06",
+        "FR07",
+        "FR10"
+      ],
+      "verification": [
+        "T05"
+      ],
+      "status": "COMPLETED",
+      "completion_record": "docs/upgrade/completion-W05.md",
+      "note": "T05 part owned by W05 PASS on fixtures built in the file shapes of Subtitle Edit/Aegisub and on machine revisions produced by the real pipeline; real editors NOT_RUN (B05, W09); export of human files is W07; legacy-task migration case of T05 is W08; interface additions recorded as CO-CAND-005"
+    },
+    "W06": {
+      "title": "质量规则与人工定位",
+      "depends_on": [
+        "W05"
+      ],
+      "requirements": [
+        "FR08",
+        "FR16"
+      ],
+      "verification": [
+        "T03"
+      ],
+      "status": "COMPLETED",
+      "completion_record": "docs/upgrade/completion-W06.md",
+      "note": "QC01-QC23 table-driven PASS (every hard error and soft hint class, unknown scores, cross-role overlap, OCR/ASR side by side); review.csv/review.html safety PASS; boundary frames labelled with the decoded PTS PASS on real FFmpeg (CFR/VFR/offset); QC21/QC22 interfaces ready, triggered by W07 exports; real engine outputs NOT_RUN (B01/B03, W09); command/location of frame export = CO-CAND-006"
+    },
+    "W07": {
+      "title": "独立字幕/视频出口",
+      "depends_on": [
+        "W05",
+        "W06",
+        "W03"
+      ],
+      "requirements": [
+        "FR10",
+        "FR11"
+      ],
+      "verification": [
+        "T06"
+      ],
+      "milestone": "M2",
+      "status": "COMPLETED",
+      "completion_record": "docs/upgrade/completion-W07.md",
+      "note": "M2 reached at command-line level: subtitle bytes exported once with their review status, explicit lossy/derived conversions, mp4_burn_sdr_v1 renders the complete human ASS with libass (real frames checked), mkv_soft_v1 copies streams and the track is extracted and compared; fonts checked, failures and cancellations publish nothing; synthetic media only (real footage/editors W09); export location = CO-CAND-007; GUI W08"
+    },
+    "W08": {
+      "title": "GUI 整合和旧项目迁移",
+      "depends_on": [
+        "W07"
+      ],
+      "requirements": [
+        "FR01",
+        "FR05",
+        "FR09",
+        "FR13",
+        "FR16"
+      ],
+      "verification": [
+        "T05",
+        "T08"
+      ],
+      "status": "COMPLETED",
+      "completion_record": "docs/upgrade/completion-W08.md",
+      "note": "part 1 (db4fd04): task-detail buttons of 3.2 with their conditions, status wording of 3.3, source revision branch, explicit exports, read-only legacy migration; part 2 (Q-W08-1 settled): new-task dialog of 3.1 (required source/name, four fixed modes, stream choice, no-audio hint, dictionary acceptance, supplied Japanese subtitles), queue list and the six operations of 3.2 (stop = INTERRUPTED + pause, skip = CANCELLED + continue, remove, resume, copy with the current configuration), open/relocate original media, resource relocation, close confirmation of 10.5; command additions = CO-CAND-008; real editors T08 in W09 (B05)"
+    },
+    "W09": {
+      "title": "真引擎、编辑器和便携候选验收",
+      "depends_on": [
+        "W08"
+      ],
+      "requirements": [
+        "FR01-FR16 集成证据"
+      ],
+      "verification": [
+        "T07",
+        "T08",
+        "T09"
+      ],
+      "status": "BLOCKED",
+      "blocked_by": [
+        "B01",
+        "B02",
+        "B03",
+        "B04",
+        "B05",
+        "B08",
+        "B09"
+      ],
+      "blocked_record": "docs/upgrade/blocked-W09-W10.md"
+    },
+    "W10": {
+      "title": "最终交付、GitHub 开源发布准备和回滚材料",
+      "depends_on": [
+        "W09"
+      ],
+      "requirements": [
+        "FR14"
+      ],
+      "verification": [
+        "第16/19节清单"
+      ],
+      "status": "BLOCKED",
+      "blocked_by": [
+        "B07",
+        "B10"
+      ],
+      "blocked_record": "docs/upgrade/blocked-W09-W10.md"
+    }
+  },
+  "verification_groups": {
+    "T01": "配置/资源/参数",
+    "T02": "持久化/中断",
+    "T03": "分段/质量契约",
+    "T04": "翻译/词典协议",
+    "T05": "人工/迁移",
+    "T06": "媒体/导出",
+    "T07": "真实引擎集成",
+    "T08": "实际人工工作流",
+    "T09": "冻结包/移动/目标机"
+  },
+  "blockers": {
+    "B01": "本地引擎精确构建来源及依赖清单",
+    "B02": "Python 3.13 正式补丁/依赖组合",
+    "B03": "Magia 是否实际输出 score/框/PTS",
+    "B04": "本机 CPU/GPU 实际 profile 与峰值",
+    "B05": "编辑器本机版本和往返",
+    "B06": "译名/风格尚有未确认条目",
+    "B07": "字体在目标环境及分发许可",
+    "B08": "真实语义人工确认",
+    "B09": "目标干净 Windows 环境",
+    "B10": "主项目许可证、实际发布文件的来源与许可",
+    "B11": "本表之外的新媒体/业务歧义"
+  },
+  "fixtures": {
+    "S01": "35 秒短片 opening_0_35.mp4（维护者本地，manifest hash 42517c6f…24a2f）",
+    "S02": "572.636 秒长片 normalized_h264.mp4（LEGACY_ROOT，维护者本地）",
+    "S03": "S01 派生无音轨视频（实施时生成）",
+    "S04": "S01 既有机器 ASS/SRT、segments、review、原生证据（维护者本地）",
+    "S05": "FFmpeg 构造 3 秒 VFR/非零 PTS/旋转/无音轨素材（测试代码生成）",
+    "S06": "手工短 ASS fixture（测试代码生成）",
+    "S07": "S01 中段 middle_300_335.mp4（维护者本地）"
+  }
+}

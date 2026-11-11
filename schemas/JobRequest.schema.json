@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/JobRequest.schema.json",
+  "title": "JobRequest",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "request_id": {
+      "type": "string"
+    },
+    "project_id": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "input": {
+      "$ref": "JobInput.schema.json"
+    },
+    "recognition_mode": {
+      "type": "string",
+      "enum": [
+        "combined",
+        "speech_only",
+        "visual_only",
+        "supplied_source"
+      ]
+    },
+    "timing_mode": {
+      "type": "string",
+      "enum": [
+        "mixed",
+        "screen",
+        "speech"
+      ]
+    },
+    "video_stream_index": {
+      "oneOf": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "audio_stream_index": {
+      "oneOf": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "source_revision_id": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "config_snapshot": {
+      "$ref": "ConfigSnapshot.schema.json"
+    },
+    "resource_refs": {
+      "type": "array",
+      "items": {
+        "$ref": "ResourceRef.schema.json"
+      }
+    },
+    "dictionary_revision_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "request_fingerprint": {
+      "type": "string"
+    },
+    "extensions": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "request_id",
+    "project_id",
+    "created_at",
+    "input",
+    "recognition_mode",
+    "timing_mode",
+    "video_stream_index",
+    "audio_stream_index",
+    "source_revision_id",
+    "config_snapshot",
+    "resource_refs",
+    "dictionary_revision_id",
+    "request_fingerprint",
+    "extensions"
+  ],
+  "additionalProperties": false
+}

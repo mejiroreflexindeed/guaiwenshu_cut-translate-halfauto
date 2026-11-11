@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/MediaRecord.schema.json",
+  "title": "MediaRecord",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "media_id": {
+      "type": "string"
+    },
+    "source_ref": {
+      "$ref": "ExternalFileRef.schema.json"
+    },
+    "source_sha256": {
+      "type": "string"
+    },
+    "duration_ms": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "selected_video_stream": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "selected_audio_stream": {
+      "oneOf": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "streams": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "clock": {
+      "$ref": "Clock.schema.json"
+    },
+    "derivatives": {
+      "type": "array",
+      "items": {
+        "$ref": "Derivative.schema.json"
+      }
+    },
+    "probe_raw_ref": {
+      "$ref": "ArtifactRef.schema.json"
+    },
+    "extensions": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "media_id",
+    "source_ref",
+    "source_sha256",
+    "duration_ms",
+    "selected_video_stream",
+    "selected_audio_stream",
+    "streams",
+    "clock",
+    "derivatives",
+    "probe_raw_ref",
+    "extensions"
+  ],
+  "additionalProperties": false
+}

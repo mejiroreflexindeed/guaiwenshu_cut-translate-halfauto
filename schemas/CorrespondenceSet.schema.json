@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/CorrespondenceSet.schema.json",
+  "title": "CorrespondenceSet",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "revision_id": {
+      "type": "string"
+    },
+    "base_revision_id": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "base_format": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "srt",
+            "ass"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "base_subtitle_sha256": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "edited_format": {
+      "type": "string",
+      "enum": [
+        "srt",
+        "ass"
+      ]
+    },
+    "correspondences": {
+      "type": "array",
+      "items": {
+        "$ref": "Correspondence.schema.json"
+      }
+    },
+    "summary": {
+      "type": "object"
+    },
+    "extensions": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "revision_id",
+    "base_revision_id",
+    "base_format",
+    "base_subtitle_sha256",
+    "edited_format",
+    "correspondences",
+    "summary",
+    "extensions"
+  ],
+  "additionalProperties": false
+}

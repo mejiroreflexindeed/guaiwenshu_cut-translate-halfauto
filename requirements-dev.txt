@@ -1,0 +1,4 @@
+# Development / test environment: core + legacy + synthetic-media fallback for tests when no FFmpeg is on PATH.
+-r requirements-core.txt
+-r requirements-legacy.txt
+imageio-ffmpeg==0.6.0

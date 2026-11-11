@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/SourceRange.schema.json",
+  "title": "SourceRange",
+  "type": "object",
+  "properties": {
+    "parent_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "char_start": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "char_end": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "required": [
+    "parent_id",
+    "char_start",
+    "char_end"
+  ],
+  "additionalProperties": false
+}

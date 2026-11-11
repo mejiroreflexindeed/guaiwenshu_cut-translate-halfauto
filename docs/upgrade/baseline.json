@@ -1,0 +1,575 @@
+{
+  "schema_version": 2,
+  "record_kind": "baseline",
+  "plan_version": "1.1",
+  "frozen_at": "2026-11-08T12:20:18Z",
+  "git": {
+    "upstream": "https://github.com/mejiroreflexindeed/guaiwenshu_cut-translate-halfauto",
+    "baseline_commit": "1a9a0104defbd9881db3f9eded017ad7b1f96edc",
+    "code_commit": "93df2625f5bfa71e8dd9bb897beac3d01a730b10",
+    "branch": "upgrade/subtitle-workflow-v2",
+    "tracked_files": 77
+  },
+  "source_manifest_check": {
+    "manifest": "docs/source_manifest.json",
+    "entries": 51,
+    "match": 51,
+    "mismatch": 0,
+    "missing": 0,
+    "fix_stage_side": "source_sha256 按清单采信（reused_from docs/source_manifest.json）；执行机无 fix_stage，不能独立复核",
+    "checked_at": "2026-11-08T12:20:18Z"
+  },
+  "legacy_tests": {
+    "runner": "scripts/run_tests.py",
+    "interpreter": "CPython 3.10.6 win-amd64",
+    "ffmpeg_for_fixtures": "ffmpeg.gyan.2024-09-26.essentials (sha256 2f14bb2f…b1a0d2)",
+    "run_without_pyyaml": {
+      "result": "10 FAIL (No module named 'yaml'), 1 FAIL (No module named 'pywinauto'), 1 FAIL (连带), 10 PASS",
+      "interpreter": "系统 3.10.6，仅 pip/setuptools",
+      "evidence": "LOCAL_WORKSPACE/roast-baseline-tests.log"
+    },
+    "run_with_declared_requirements_plus_pyyaml": {
+      "result": "22/22 PASS",
+      "executed_at": "2026-11-08T12:11:07Z",
+      "venv": "LOCAL_WORKSPACE/roast-venv310",
+      "packages": [
+        "Pillow 12.2.0",
+        "yt-dlp 2026.7.4",
+        "imageio-ffmpeg 0.6.0",
+        "pywinauto 0.6.9",
+        "pywin32 312",
+        "PyYAML 6.0.3",
+        "comtypes 1.4.17",
+        "six 1.17.0"
+      ],
+      "evidence": "LOCAL_WORKSPACE/roast-baseline-tests-venv.log; test-results/summary.json(不入库)"
+    },
+    "classification": {
+      "smoke_test.py": {
+        "group": "T03/T07-fixture",
+        "needs": [
+          "ffmpeg(合成媒体)",
+          "subprocess"
+        ],
+        "role": "core"
+      },
+      "segmentation_cache_test.py": {
+        "group": "T03",
+        "needs": [
+          "ffmpeg",
+          "smoke_test 产物",
+          "subprocess"
+        ],
+        "role": "core"
+      },
+      "subtitle_segments_test.py": {
+        "group": "T03",
+        "needs": [],
+        "role": "core"
+      },
+      "subtitle_axis_align_test.py": {
+        "group": "T03",
+        "needs": [],
+        "role": "core"
+      },
+      "subtitle_quality_test.py": {
+        "group": "T03",
+        "needs": [
+          "subprocess"
+        ],
+        "role": "core"
+      },
+      "artifact_validation_test.py": {
+        "group": "T03",
+        "needs": [],
+        "role": "core"
+      },
+      "whisper_clock_recovery_test.py": {
+        "group": "T03",
+        "needs": [],
+        "role": "core"
+      },
+      "unrestricted_pipeline_test.py": {
+        "group": "T03",
+        "needs": [
+          "PyYAML"
+        ],
+        "role": "core"
+      },
+      "voicetransl_adapter_test.py": {
+        "group": "T03/T04",
+        "needs": [
+          "subprocess(假引擎)",
+          "PyYAML"
+        ],
+        "role": "core"
+      },
+      "sakura_client_test.py": {
+        "group": "T04",
+        "needs": [
+          "本地 HTTP 服务",
+          "PyYAML"
+        ],
+        "role": "core"
+      },
+      "dictionary_editor_test.py": {
+        "group": "T04",
+        "needs": [
+          "PyYAML"
+        ],
+        "role": "core"
+      },
+      "magia_timeline_adapter_test.py": {
+        "group": "T03",
+        "needs": [
+          "subprocess",
+          "PyYAML"
+        ],
+        "role": "core"
+      },
+      "magia_utf8_runtime_test.py": {
+        "group": "T01",
+        "needs": [],
+        "role": "core"
+      },
+      "task_state_test.py": {
+        "group": "T02",
+        "needs": [
+          "PyYAML(间接)"
+        ],
+        "role": "core"
+      },
+      "batch_queue_smoke_test.py": {
+        "group": "T02",
+        "needs": [
+          "PyYAML(间接)"
+        ],
+        "role": "core"
+      },
+      "ui_process_tree_test.py": {
+        "group": "T02",
+        "needs": [
+          "subprocess"
+        ],
+        "role": "core"
+      },
+      "tool_discovery_test.py": {
+        "group": "T01",
+        "needs": [],
+        "role": "core"
+      },
+      "diagnostics_test.py": {
+        "group": "T01/T09",
+        "needs": [],
+        "role": "core"
+      },
+      "release_sync_test.py": {
+        "group": "legacy",
+        "needs": [],
+        "role": "legacy(维护)"
+      },
+      "jianying_bridge_test.py": {
+        "group": "legacy",
+        "needs": [],
+        "role": "legacy(D16)"
+      },
+      "jianying_ui_selection_test.py": {
+        "group": "legacy",
+        "needs": [
+          "pywinauto"
+        ],
+        "role": "legacy(D16)"
+      },
+      "forced_alignment_test.py": {
+        "group": "legacy",
+        "needs": [],
+        "role": "legacy(默认禁用)"
+      }
+    }
+  },
+  "legacy_evidence_registered": {
+    "source": [
+      "docs/architecture-audit/01-current-state.md",
+      "docs/verification.md"
+    ],
+    "reused": true,
+    "locally_verifiable": false,
+    "accuracy_accepted": false,
+    "native_ui_accepted": false,
+    "s01_35s": {
+      "modes": [
+        "mixed",
+        "speech"
+      ],
+      "cues_each": 15,
+      "source_chars": 234,
+      "review_rows_each": 13,
+      "native_term_misses": 3,
+      "manifest_sha256": "42517c6f9cac573db5f5d42c14e2c245f08f9f3d6bba5bb98d8df91754124a2f"
+    },
+    "s02_long": {
+      "media_end_ms": 572636,
+      "structural_check": "127 段/3641 原字符（双模式）",
+      "semantic_accuracy": "未验"
+    },
+    "note": "W00 未重跑任何模型；以上数字是审计记录的历史证据，不是本次实测。"
+  },
+  "executing_environment": {
+    "os": "Windows 11 Home 10.0.26300",
+    "python_installed": [
+      "3.10.6 (py launcher)"
+    ],
+    "python_313": null,
+    "gpu": "NVIDIA GeForce RTX 4080 SUPER 16376 MiB, driver 617.42",
+    "on_path": {
+      "ffmpeg": false,
+      "ffprobe": false,
+      "yt-dlp": false,
+      "llama-server": false,
+      "git": true
+    },
+    "editors_installed": {
+      "Subtitle Edit": false,
+      "Aegisub": false
+    },
+    "resources_inventory_sha256": "1960537ff79fce047e5f1c1b41458c253baa51f19426d3ebba6860f0ae82e6c2"
+  },
+  "effective_config": {
+    "private_snapshot": "docs/upgrade/effective-config.private.json (不入库)",
+    "user_local_config_present": false,
+    "translation_defaults": {
+      "workers": 1,
+      "batch_size": 10,
+      "context_size": 16384,
+      "gpu_layers": 100,
+      "temperature": 0.3,
+      "top_p": 0.8
+    },
+    "source": "app/config/roast_pipeline.example.json（与计划 8.4 核对值一致）"
+  },
+  "dictionary_pending_entries": [
+    {
+      "file": "app/config/dict_gpt.txt",
+      "entries": [
+        "ラモーヌ\tラモーヌ [待确认]",
+        "ラモさん\tラモさん [待确认]"
+      ]
+    },
+    {
+      "file": "app/config/translation_glossary.json",
+      "entries": [
+        "アルトレ: default/trainer_context 二选一，note=根据上下文选择"
+      ]
+    }
+  ],
+  "file_hashes": {
+    ".gitattributes": {
+      "bytes": 152,
+      "sha256": "b2b460620e74d743d5967b6799185da178b6c5f599b5001f32d5b4c9711c2474"
+    },
+    ".gitignore": {
+      "bytes": 434,
+      "sha256": "c921d1b6e79a87f0ddf35a1a27df902c12911873bb10a3bbdb21116383ab5ec6"
+    },
+    "README.md": {
+      "bytes": 2454,
+      "sha256": "68880ab2b8e23478b7a4451ec6690b5f2f0e4e9c8f543462665d10f285a5eafe"
+    },
+    "app/config/dict_after.txt": {
+      "bytes": 246,
+      "sha256": "a4743733a0a240889cace820694b9c9334b933f56b3bd76a1c568970f07ca05d"
+    },
+    "app/config/dict_gpt.txt": {
+      "bytes": 458,
+      "sha256": "a5ded2b38607aef1f643ab60add990b07c4a0ae553e1094a0eff0aa2bf8c756d"
+    },
+    "app/config/dict_pre.txt": {
+      "bytes": 244,
+      "sha256": "d802a0de3795434de4162fd8b3721cab234dc21169540fd11b4f39fafc5ea7a7"
+    },
+    "app/config/roast_pipeline.example.json": {
+      "bytes": 3278,
+      "sha256": "d0a75403645545dbb6ac7e66966a6c39fb6890e229e108b387a27e320d1ab7e8"
+    },
+    "app/config/translation_glossary.json": {
+      "bytes": 539,
+      "sha256": "2d2bc36adeb21fe0476ca622d37c496bc43a4ebf8a5469d2a8e8dc6efe6e0f18"
+    },
+    "app/config/translation_style_prompt.txt": {
+      "bytes": 1364,
+      "sha256": "0db61e5b7bb8809015994584e8e09f7e38f7425ba55d4af77dc93b62e2e2aab8"
+    },
+    "app/tools/artifact_validation.py": {
+      "bytes": 12591,
+      "sha256": "bc68671c6a200459fc0d08394faee3a95d4edd3cab7154ecfa9527659189ef75"
+    },
+    "app/tools/capture_app_window.py": {
+      "bytes": 2618,
+      "sha256": "bda3c625256d6e1d1c348327c23b0d31a0d1bbd8d31a4fe6f64ca733ec6ed784"
+    },
+    "app/tools/diagnostics.py": {
+      "bytes": 8806,
+      "sha256": "214924687bc95d52985f39b59d5ed5a3bf85d39236ed4039b9047e2ba482ee98"
+    },
+    "app/tools/dictionary_editor.py": {
+      "bytes": 6856,
+      "sha256": "3f098bff34620959b7c0e318828966aebbf35ff4ce54394af5e0238ab28ab61d"
+    },
+    "app/tools/forced_alignment.py": {
+      "bytes": 12858,
+      "sha256": "a3adfcda30c1acc354af781a3ac2cd781576695f0c825719251606e98d5a2423"
+    },
+    "app/tools/jianying_bridge.py": {
+      "bytes": 6994,
+      "sha256": "03ee0e78e66fceb055163342eb31095d37f397a120784ee2ae878ab178c25777"
+    },
+    "app/tools/jianying_ui_import.py": {
+      "bytes": 22505,
+      "sha256": "3bed4b560b280cfe435125dd17ef6ad74ed23a14f9b2ad93a1200754a070c282"
+    },
+    "app/tools/jianying_uia_probe.py": {
+      "bytes": 7543,
+      "sha256": "14dddb756e8cd9c8da493bd0b2756077a147dc7054a1bba580b282641cc40c37"
+    },
+    "app/tools/magia_timeline_adapter.py": {
+      "bytes": 16672,
+      "sha256": "dcff0f9b2e6fdeacc466c913616c0157ec46387917837605b4dc846b8e02ecd7"
+    },
+    "app/tools/magia_utf8_runtime.py": {
+      "bytes": 8507,
+      "sha256": "f214db8d2bca529ede50e67644c54caf89e68123fdbdeda155c36736dbe14dd0"
+    },
+    "app/tools/one_click_roast.py": {
+      "bytes": 126678,
+      "sha256": "f98399625d06141e779fa1cace054b131788c34efcbff514a4ec793561775cae"
+    },
+    "app/tools/release_sync.py": {
+      "bytes": 16388,
+      "sha256": "91b04ac91578ec67790635448edbbe524ed712439ab77b1741677f2e121a5187"
+    },
+    "app/tools/roast_inbox.py": {
+      "bytes": 8046,
+      "sha256": "a73739e96835aab7123ceafee08ba08fb511a375836f1770925fe9c3de521f9c"
+    },
+    "app/tools/roast_pipeline.py": {
+      "bytes": 69302,
+      "sha256": "52a028ba2b28aff543a2a3f34c7e29b81c6261a2efa426273d4f07077394e33b"
+    },
+    "app/tools/sakura_client.py": {
+      "bytes": 23486,
+      "sha256": "7698ad645beddfd0728670331535c4ee80bca394e07536ec1d57f029844d6280"
+    },
+    "app/tools/subtitle_axis_align.py": {
+      "bytes": 17849,
+      "sha256": "e2ce4461fc1b868ef9954433b951537e505ae6d55a6c3afd3626b4495cb16e12"
+    },
+    "app/tools/subtitle_segments.py": {
+      "bytes": 38415,
+      "sha256": "be0d8f0611edfc25ea2299e94dc12f8d66d1009b3dab7c7a48172405371891a1"
+    },
+    "app/tools/task_state.py": {
+      "bytes": 17537,
+      "sha256": "95173e25b9f433971796a41f5af6c6c98bb13934b1a2f8353aa82174c68fbb0f"
+    },
+    "app/tools/tool_discovery.py": {
+      "bytes": 19033,
+      "sha256": "5a0fbfb88b59498fac90bbfbd34e6601871177234bf958a179e264d8c1f4b933"
+    },
+    "app/tools/translation_checkpoint.py": {
+      "bytes": 3166,
+      "sha256": "0d11970fbfc6a0fc6b2d9a465bde1ab187ce2f9506c12071a98c9cc0efc8e6c5"
+    },
+    "app/tools/voice_common.py": {
+      "bytes": 3739,
+      "sha256": "6238d6b13a4a229e222835994646946821448cc298550032fd334f2eec36b085"
+    },
+    "app/tools/voice_dictionary.py": {
+      "bytes": 9087,
+      "sha256": "839d70444e5a54fcf0b83530c8c019d8aa3b3f0d23302b8e6d8edba66151d900"
+    },
+    "app/tools/voicetransl_adapter.py": {
+      "bytes": 32006,
+      "sha256": "6cab3d9d6de581ea12568545dc52c3a2608f47c1750771b015e6e97b6f6ed200"
+    },
+    "build/windows.spec": {
+      "bytes": 798,
+      "sha256": "8e760832264b60192b724825b313c5167e1d30233b486e1c8c6204d6055ec650"
+    },
+    "docs/architecture-audit/01-current-state.md": {
+      "bytes": 21697,
+      "sha256": "0c07f603e910743a850196aff6a10d3994f1c2da4ac1e2097ae9961a2e16f217"
+    },
+    "docs/architecture-audit/02-voicetransl-analysis.md": {
+      "bytes": 19776,
+      "sha256": "763b7590dd817e07b5fe34c1ad98cfd8573b847f240234e817e71d36125626bf"
+    },
+    "docs/architecture-audit/03-media-pipeline.md": {
+      "bytes": 23261,
+      "sha256": "88ef2d796073d9e7044c02b038c81dfb80df27815b0c616ef1df8ea30e47c8fc"
+    },
+    "docs/architecture-audit/04-quality-control.md": {
+      "bytes": 17468,
+      "sha256": "a0dedff5b90f8f8574133c83df451f232879169c16aff2d204ac821dc9a3b800"
+    },
+    "docs/architecture-audit/05-refactoring-options.md": {
+      "bytes": 11767,
+      "sha256": "db7180f54ad779e421513425dee7176406c84ca833a68f33e31dd5254f4d2133"
+    },
+    "docs/architecture-audit/06-implementation-roadmap.md": {
+      "bytes": 12203,
+      "sha256": "de0b5c1dd092f383ed55f9be911bcb37f00b1d63b02c41d7068a662b3502bfaf"
+    },
+    "docs/architecture-audit/07-open-questions.md": {
+      "bytes": 12539,
+      "sha256": "cfed46ab8b2d871aaa1558dfaab9cebee3dd3fcedd47e60bfa8611b8e8671e85"
+    },
+    "docs/architecture-audit/08-complete-upgrade-plan.md": {
+      "bytes": 126595,
+      "sha256": "920fda62714e664e2e7df92cb3dddc5a7fc53369df2a920fb8240f7b50c0857e"
+    },
+    "docs/architecture-audit/README.md": {
+      "bytes": 3108,
+      "sha256": "44b565a3b1cfd6cfec337cb88a49b38e73a621f74c81240c9b73929d78369a37"
+    },
+    "docs/architecture-audit/完整调查报告_合并版_供Claude.md": {
+      "bytes": 118753,
+      "sha256": "2c2f4b676b90dded0354ecfaf2e5899138fca7831bbbbd8b8ef0ce5bc8cde256"
+    },
+    "docs/architecture.md": {
+      "bytes": 1434,
+      "sha256": "beaebb1223344b031c56cb3255ff40bf5e1200465e7e8711f0495b93309f482f"
+    },
+    "docs/changes-and-constraints.md": {
+      "bytes": 16611,
+      "sha256": "9abb427ecf247bd1345734486fa9d443059bfe07ba643e732746bc0669611227"
+    },
+    "docs/getting-started.md": {
+      "bytes": 2559,
+      "sha256": "b8da362a3d929923368d8972c2f43fbc1b2804baaf1d6ef8bff87f5acaef2797"
+    },
+    "docs/publication.md": {
+      "bytes": 1866,
+      "sha256": "0b08efec4d2b8580539daa32951389aa57c9198df869eae6827a88aec8204655"
+    },
+    "docs/source_manifest.json": {
+      "bytes": 20897,
+      "sha256": "4d21969b4472f275024d768ae77bde61bd8352e794f5f44352cb310588d76529"
+    },
+    "docs/third-party.md": {
+      "bytes": 959,
+      "sha256": "7b6fc875e1a7b691e2b5d9456e849d6a2b126e7ac1effb4e34302d0af666aa88"
+    },
+    "docs/verification.md": {
+      "bytes": 1596,
+      "sha256": "2eecf6993342c6e96d6ad5f47bc81301ddb0773eddb304b4f2e48bc7d9210abb"
+    },
+    "requirements-build.txt": {
+      "bytes": 40,
+      "sha256": "8860ef773e2b24457f26c8ba8821da3b23e149d0d46d63998631883bdfc269c3"
+    },
+    "requirements.txt": {
+      "bytes": 219,
+      "sha256": "01ec05a4b096dbd402824542123b40655b5a5295be91a902558c9ef2b576afd7"
+    },
+    "scripts/build_windows.py": {
+      "bytes": 1062,
+      "sha256": "4f723c33f7f3fa27f6731a39075750bcb806db19d767e17e9524ddc73f85640c"
+    },
+    "scripts/run_gui.py": {
+      "bytes": 284,
+      "sha256": "59819eb7555c052571c2589e1c8fb45679b8a8f5c42eac5f12dcf3648abba61d"
+    },
+    "scripts/run_tests.py": {
+      "bytes": 2261,
+      "sha256": "4ce03cf60ea0ec02da7d23338af6d8e449521625298891e74c724cdd149dd8fe"
+    },
+    "tests/artifact_validation_test.py": {
+      "bytes": 3637,
+      "sha256": "fa9ba6b1beccf1d769d39701428dc7933b8d41f9c109eed33b9fc8a33d089c5b"
+    },
+    "tests/batch_queue_smoke_test.py": {
+      "bytes": 5914,
+      "sha256": "768675578bfde1a6d2980e6ed74843abdc405d11d8d617939d21029cb7fa405b"
+    },
+    "tests/diagnostics_test.py": {
+      "bytes": 4777,
+      "sha256": "cae23fdca63746d48164aee2f127d2e949b0bbef88ce1d930fd95419b31a4c5b"
+    },
+    "tests/dictionary_editor_test.py": {
+      "bytes": 6683,
+      "sha256": "9fbce00a9defd3321836f5bb4b1fb625b4fd19e28f6e29c0e90c4606bfce7905"
+    },
+    "tests/forced_alignment_test.py": {
+      "bytes": 4343,
+      "sha256": "0eab8ce9c2d41ebf519cf6c81f1e210e306d0815b939e3a82a2db39eb5300200"
+    },
+    "tests/jianying_bridge_test.py": {
+      "bytes": 3124,
+      "sha256": "9f253e2fee7e87fc6452e5c44ebf9b2f8e373ba05bd3ec535914559825ef2776"
+    },
+    "tests/jianying_ui_selection_test.py": {
+      "bytes": 1359,
+      "sha256": "1478fdb1ec7e2d9091a50c1ce56ff51f8c71e35a5823f615546b58cedae208e4"
+    },
+    "tests/magia_timeline_adapter_test.py": {
+      "bytes": 4948,
+      "sha256": "3e59c67ae4dee560c9ca7ebfd619a50489a6628a293b2e0287e2c4aacce17d53"
+    },
+    "tests/magia_utf8_runtime_test.py": {
+      "bytes": 4311,
+      "sha256": "a04c3d3cd02af581cc3e0b3301a5e3189880c3e93f0161bf9d03e664db86046c"
+    },
+    "tests/release_sync_test.py": {
+      "bytes": 10531,
+      "sha256": "5800c0ac82f8e18b491703b2f514902d6c30d10791affe72ed6a936568e359b4"
+    },
+    "tests/sakura_client_test.py": {
+      "bytes": 25736,
+      "sha256": "c4a642d696ea83793cbd0d39b11c2c65039bfc2f23c83f91c1f924ecbe785872"
+    },
+    "tests/segmentation_cache_test.py": {
+      "bytes": 30150,
+      "sha256": "3d13aaf2ee64e0687d290dd9f2b86d974fadd4a678c24ca991cec133a0872391"
+    },
+    "tests/smoke_test.py": {
+      "bytes": 14912,
+      "sha256": "2c52080303a131d3ee0e47c10c7fd405ff140e32301f2041208a65e4c27f7438"
+    },
+    "tests/subtitle_axis_align_test.py": {
+      "bytes": 5065,
+      "sha256": "6e5e44ca046359797a4f35aca741d4c970681a60f150ad4d40a126f2d610441c"
+    },
+    "tests/subtitle_quality_test.py": {
+      "bytes": 7458,
+      "sha256": "380417a8637e4e94bede365fbbbcc012c55eabdaaee56c3ca96d6de040102014"
+    },
+    "tests/subtitle_segments_test.py": {
+      "bytes": 29530,
+      "sha256": "202b94bd9b5d5983748f9c2184b7d33596d0c5cf9ab534d8ab93e828d83da289"
+    },
+    "tests/task_state_test.py": {
+      "bytes": 5876,
+      "sha256": "4c5c4a316a24e38546222002c42aac25e3fac3e538b105da8e279f52a38fe618"
+    },
+    "tests/tool_discovery_test.py": {
+      "bytes": 6376,
+      "sha256": "682eadd59a1e1649654fe8beeef876fbd72cbb7dff3822d534c4b25a67b3318b"
+    },
+    "tests/ui_process_tree_test.py": {
+      "bytes": 6768,
+      "sha256": "fa2a69a3277c063e5cbfe2d846e1560d2388f2196b5e7c2abd47501c37dd39dc"
+    },
+    "tests/unrestricted_pipeline_test.py": {
+      "bytes": 8563,
+      "sha256": "cb5b7caf6d2f03c80852e2c3504e0df91b630329dfd63515136d8f447b7333ae"
+    },
+    "tests/voicetransl_adapter_test.py": {
+      "bytes": 27825,
+      "sha256": "ef0fd99e1fda6bc838abdf99c4e34f55194338ab0fb66a6f9c3aa0c9fd839191"
+    },
+    "tests/whisper_clock_recovery_test.py": {
+      "bytes": 6348,
+      "sha256": "c0b054733c5613c5ad008b278d8828fd8657de9c22cec71f6c49d82010b82659"
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/VisualEvidence.schema.json",
+  "title": "VisualEvidence",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "evidence_id": {
+      "type": "string"
+    },
+    "media_id": {
+      "type": "string"
+    },
+    "engine_ref": {
+      "$ref": "ResourceRef.schema.json"
+    },
+    "model_refs": {
+      "type": "array",
+      "items": {
+        "$ref": "ResourceRef.schema.json"
+      }
+    },
+    "roi": {
+      "$ref": "ROI.schema.json"
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "$ref": "VisualEvent.schema.json"
+      }
+    },
+    "raw_refs": {
+      "type": "array",
+      "items": {
+        "$ref": "ArtifactRef.schema.json"
+      }
+    },
+    "evidence_level": {
+      "type": "string",
+      "enum": [
+        "interval_only",
+        "frame_supported",
+        "scored_frames"
+      ]
+    },
+    "extensions": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "evidence_id",
+    "media_id",
+    "engine_ref",
+    "model_refs",
+    "roi",
+    "events",
+    "raw_refs",
+    "evidence_level",
+    "extensions"
+  ],
+  "additionalProperties": false
+}

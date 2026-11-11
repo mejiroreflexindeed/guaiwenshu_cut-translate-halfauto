@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/Segment.schema.json",
+  "title": "Segment",
+  "type": "object",
+  "properties": {
+    "cue_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "legacy_cue_id": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "index": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "start_ms": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "end_ms": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "source_text": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "speech",
+        "screen",
+        "mixed",
+        "unknown"
+      ]
+    },
+    "source_ranges": {
+      "type": "array",
+      "items": {
+        "$ref": "SourceRange.schema.json"
+      }
+    },
+    "visual_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "timing_source": {
+      "type": "string",
+      "minLength": 1
+    },
+    "flags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "cue_id",
+    "legacy_cue_id",
+    "index",
+    "start_ms",
+    "end_ms",
+    "source_text",
+    "role",
+    "source_ranges",
+    "visual_ids",
+    "timing_source",
+    "flags"
+  ],
+  "additionalProperties": false
+}

@@ -1,6 +1,4 @@
-# Versions available in the verified publication environment. Windows / Python 3.10.
-pywinauto==0.6.9; sys_platform == "win32"
-pywin32==312; sys_platform == "win32"
-Pillow==12.2.0
-yt-dlp==2026.7.4
+# Full install (core + legacy). Verified on Windows / Python 3.10 (legacy) ; Python 3.13 lock pending (B02).
+-r requirements-core.txt
+-r requirements-legacy.txt
 imageio-ffmpeg==0.6.0

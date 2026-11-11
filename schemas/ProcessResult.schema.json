@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/ProcessResult.schema.json",
+  "title": "ProcessResult",
+  "type": "object",
+  "properties": {
+    "exit_code": {
+      "type": "integer"
+    },
+    "cancelled": {
+      "type": "boolean"
+    },
+    "started_at": {
+      "type": "string"
+    },
+    "ended_at": {
+      "type": "string"
+    },
+    "stdout_ref": {
+      "$ref": "ArtifactRef.schema.json"
+    },
+    "stderr_ref": {
+      "$ref": "ArtifactRef.schema.json"
+    },
+    "observed_engine_id": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "exit_code",
+    "cancelled",
+    "started_at",
+    "ended_at",
+    "stdout_ref",
+    "stderr_ref",
+    "observed_engine_id"
+  ],
+  "additionalProperties": false
+}

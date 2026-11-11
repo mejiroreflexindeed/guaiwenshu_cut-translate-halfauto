@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/ExportRequest.schema.json",
+  "title": "ExportRequest",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "export_id": {
+      "type": "string"
+    },
+    "project_id": {
+      "type": "string"
+    },
+    "revision_id": {
+      "type": "string"
+    },
+    "media_id": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "subtitles",
+        "mp4_burn",
+        "mkv_soft"
+      ]
+    },
+    "selected_audio_stream": {
+      "oneOf": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "profile_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "destination_root": {
+      "type": "string",
+      "minLength": 1
+    },
+    "include_media": {
+      "type": "boolean"
+    },
+    "quality_acknowledgement": {
+      "type": "object"
+    },
+    "created_at": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "export_id",
+    "project_id",
+    "revision_id",
+    "media_id",
+    "kind",
+    "selected_audio_stream",
+    "profile_id",
+    "destination_root",
+    "include_media",
+    "quality_acknowledgement",
+    "created_at"
+  ],
+  "additionalProperties": false
+}

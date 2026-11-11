@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/StageRecord.schema.json",
+  "title": "StageRecord",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "enum": [
+        "INPUT",
+        "MEDIA_PREP",
+        "OCR",
+        "ASR",
+        "SOURCE",
+        "TRANSLATION",
+        "SUBTITLE_BUILD",
+        "QUALITY_AND_COMMIT"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "PENDING",
+        "RUNNING",
+        "DONE",
+        "FAILED",
+        "INTERRUPTED",
+        "CANCELLED",
+        "SKIPPED"
+      ]
+    },
+    "attempts": {
+      "type": "array",
+      "items": {
+        "$ref": "Attempt.schema.json"
+      }
+    },
+    "input_signature": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "output_manifest": {
+      "oneOf": [
+        {
+          "$ref": "ArtifactRef.schema.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "skip_reason": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "started_at": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "ended_at": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "error": {
+      "oneOf": [
+        {
+          "$ref": "ErrorObject.schema.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "name",
+    "status",
+    "attempts",
+    "input_signature",
+    "output_manifest",
+    "skip_reason",
+    "started_at",
+    "ended_at",
+    "error"
+  ],
+  "additionalProperties": false
+}

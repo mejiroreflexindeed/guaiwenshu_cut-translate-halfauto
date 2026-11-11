@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/TranslationRecord.schema.json",
+  "title": "TranslationRecord",
+  "type": "object",
+  "properties": {
+    "cue_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_revision_id": {
+      "type": "string"
+    },
+    "source_text_sha256": {
+      "type": "string"
+    },
+    "target_text": {
+      "type": "string"
+    },
+    "request_ref": {
+      "$ref": "ArtifactRef.schema.json"
+    },
+    "raw_response_ref": {
+      "$ref": "ArtifactRef.schema.json"
+    },
+    "engine_ref": {
+      "$ref": "ResourceRef.schema.json"
+    },
+    "model_ref": {
+      "$ref": "ResourceRef.schema.json"
+    },
+    "dictionary_revision_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "prompt_sha256": {
+      "type": "string"
+    },
+    "postprocess_trace_ref": {
+      "$ref": "ArtifactRef.schema.json"
+    },
+    "flags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "cue_id",
+    "source_revision_id",
+    "source_text_sha256",
+    "target_text",
+    "request_ref",
+    "raw_response_ref",
+    "engine_ref",
+    "model_ref",
+    "dictionary_revision_id",
+    "prompt_sha256",
+    "postprocess_trace_ref",
+    "flags"
+  ],
+  "additionalProperties": false
+}

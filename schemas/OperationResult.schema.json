@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.roast.local/v2/OperationResult.schema.json",
+  "title": "OperationResult",
+  "type": "object",
+  "properties": {
+    "ok": {
+      "type": "boolean"
+    },
+    "operation": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ids": {
+      "type": "object"
+    },
+    "artifact_refs": {
+      "type": "array",
+      "items": {
+        "$ref": "ArtifactRef.schema.json"
+      }
+    },
+    "error": {
+      "oneOf": [
+        {
+          "$ref": "ErrorObject.schema.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "warnings": {
+      "type": "array",
+      "items": {}
+    }
+  },
+  "required": [
+    "ok",
+    "operation",
+    "ids",
+    "artifact_refs",
+    "error",
+    "warnings"
+  ],
+  "additionalProperties": false
+}
